@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -15,58 +16,68 @@
         body{
             min-height:100vh;
             display:flex;
-            justify-content:center;
             align-items:center;
+            justify-content:center;
             padding:20px;
             font-family:'Segoe UI',sans-serif;
 
             background:
-            radial-gradient(circle at 15% 20%, rgba(255,255,255,.9) 0 45px, transparent 46px),
-            radial-gradient(circle at 80% 25%, rgba(255,255,255,.8) 0 35px, transparent 36px),
-            radial-gradient(circle at 30% 80%, rgba(255,255,255,.7) 0 50px, transparent 51px),
-            radial-gradient(circle at 75% 75%, rgba(255,255,255,.8) 0 40px, transparent 41px),
-            linear-gradient(135deg,#dff4ff,#b3e5fc,#eaf8ff);
+            radial-gradient(circle at 20% 20%, rgba(255,255,255,.8) 0 50px, transparent 51px),
+            radial-gradient(circle at 80% 30%, rgba(255,255,255,.7) 0 40px, transparent 41px),
+            radial-gradient(circle at 30% 80%, rgba(255,255,255,.6) 0 45px, transparent 46px),
+            linear-gradient(135deg,#dff7ff,#f9e7ff,#fff6d9);
+
+            color:#555;
         }
 
         .card{
             background:rgba(255,255,255,0.95);
             width:100%;
-            max-width:430px;
-            border-radius:30px;
+            max-width:420px;
             padding:25px;
             text-align:center;
-            box-shadow:0 15px 40px rgba(102,181,255,.25);
-            border:3px solid #e3f6ff;
-            animation:fadeIn 0.8s ease;
+            border-radius:30px;
+            box-shadow:0 15px 35px rgba(160,180,255,.25);
+            border:3px solid rgba(255,255,255,.7);
+            backdrop-filter:blur(5px);
+
+            animation:floatCard 3s ease-in-out infinite;
         }
 
         .card-header{
-            height:170px;
+            height:160px;
             border-radius:25px;
             margin-bottom:20px;
 
             background:
-            radial-gradient(circle at 20% 30%, white 0 25px, transparent 26px),
-            radial-gradient(circle at 35% 30%, white 0 30px, transparent 31px),
-            radial-gradient(circle at 50% 30%, white 0 25px, transparent 26px),
-            linear-gradient(180deg,#dff4ff,#b3e5fc);
+            linear-gradient(
+                135deg,
+                #d6f4ff,
+                #e9dcff,
+                #fff3c9
+            );
 
             display:flex;
             justify-content:center;
             align-items:center;
+            flex-direction:column;
 
-            font-size:80px;
+            font-size:60px;
+        }
+
+        .cute{
+            font-size:20px;
+            margin-top:5px;
         }
 
         h1{
-            color:#4da6d9;
-            font-size:26px;
+            color:#6a8cff;
+            font-size:25px;
             margin-bottom:15px;
             line-height:1.4;
         }
 
         p{
-            color:#555;
             font-size:16px;
             line-height:1.8;
             margin:10px 0;
@@ -74,48 +85,54 @@
 
         .btn{
             display:block;
-            text-decoration:none;
             margin-top:25px;
             padding:15px;
 
-            background:linear-gradient(
-                45deg,
-                #81d4fa,
-                #4fc3f7
-            );
-
+            text-decoration:none;
             color:white;
             font-weight:bold;
-            border-radius:50px;
+
+            border-radius:999px;
+
+            background:linear-gradient(
+                45deg,
+                #8ec5ff,
+                #bca7ff,
+                #ffc8dd
+            );
+
+            box-shadow:0 6px 15px rgba(170,150,255,.35);
             transition:.3s;
-            box-shadow:0 5px 15px rgba(79,195,247,.4);
         }
 
         .btn:hover{
             transform:translateY(-3px);
-            box-shadow:0 8px 20px rgba(79,195,247,.5);
+            box-shadow:0 10px 20px rgba(170,150,255,.45);
         }
 
-        .cute-text{
-            color:#7ab7dd;
+        .tag{
+            display:inline-block;
+            background:#eef8ff;
+            color:#6a8cff;
+            padding:8px 14px;
+            border-radius:20px;
+            margin-bottom:15px;
+            font-size:14px;
             font-weight:600;
-            margin-bottom:10px;
         }
 
         .footer{
             margin-top:18px;
-            color:#90caf9;
+            color:#9aa7ff;
             font-size:14px;
         }
 
-        @keyframes fadeIn{
-            from{
-                opacity:0;
-                transform:translateY(20px);
-            }
-            to{
-                opacity:1;
+        @keyframes floatCard{
+            0%,100%{
                 transform:translateY(0);
+            }
+            50%{
+                transform:translateY(-6px);
             }
         }
     </style>
@@ -126,7 +143,8 @@
     <div class="card">
 
         <div class="card-header">
-            ☁️🐶☁️
+            🐰☁️🐻
+            <div class="cute">✨ Pastel Dream ✨</div>
         </div>
 
         <h1>
@@ -134,18 +152,18 @@
             อรณิฎาศ์ (Onnida)
         </h1>
 
-        <div class="cute-text">
-            Cinnamoroll Blue Sky Theme 💙
+        <div class="tag">
+            🌸 Student • Gifted Program • Health Science 🌸
         </div>
 
         <p>
             ขณะนี้กำลังศึกษาและสนใจ
-            Gifted Program & ด้านวิทย์สุขภาพค่ะ ✨
+            Gifted Program & ด้านวิทย์สุขภาพค่ะ 💖
         </p>
 
         <p>
             นี่คือเว็บไซต์แรกของดิฉัน
-            ที่โฮสต์บน GitHub Pages ☁️
+            ที่โฮสต์บน GitHub Pages 🌈✨
         </p>
 
         <a href="portfolio.html" class="btn">
@@ -153,7 +171,7 @@
         </a>
 
         <div class="footer">
-            Made with 💙 by Onnida
+            ☁️ Made with love by Onnida ☁️
         </div>
 
     </div>
