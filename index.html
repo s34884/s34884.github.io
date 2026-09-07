@@ -17,7 +17,7 @@
             color: #333;
         }
 
-        /* Navbar ด้านบนแบบในคลิป */
+        /* Navbar ด้านบน */
         .navbar {
             background-color: #1e293b;
             padding: 15px 0;
@@ -72,7 +72,7 @@
             margin-bottom: 20px;
         }
 
-        /* กล่องข้อมูลแนะนำตัว */
+        /* กล่องเนื้อหาแบบบล็อก */
         .info-box {
             background-color: #e0f2fe;
             border-radius: 10px;
@@ -84,12 +84,14 @@
         .info-box h3 {
             color: #0369a1;
             margin-bottom: 12px;
+            font-size: 18px;
         }
 
         .info-box p {
             margin: 8px 0;
             color: #0f172a;
             font-size: 15px;
+            line-height: 1.6;
         }
 
         /* ช่องทางการติดต่อ */
@@ -104,6 +106,7 @@
         .contact-box h3 {
             color: #334155;
             margin-bottom: 12px;
+            font-size: 18px;
         }
 
         .contact-list {
@@ -124,6 +127,28 @@
         .contact-list a:hover {
             text-decoration: underline;
         }
+
+        /* บล็อกเน้นข้อดี/จุดเด่น */
+        .highlight-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            border-radius: 6px;
+            padding: 15px 20px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .highlight-box h3 {
+            color: #15803d;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .highlight-box p {
+            color: #166534;
+            font-size: 15px;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -143,23 +168,40 @@
     <!--ส่วนเนื้อหาหลัก-->
     <div class="container">
         <div class="card">
-            <!--เปลี่ยน src เป็นที่อยู่รูปภาพของคุณ-->
+            <!--รูปโปรไฟล์-->
             <img src="https://via.placeholder.com/200" alt="รูปโปรไฟล์" class="profile-img">
             
+            <!--ส่วนแนะนำตัวหลัก-->
             <div class="info-box">
                 <h3>แนะนำตัว</h3>
                 <p><strong>ชื่อ-นามสกุล:</strong> นางสาวอรณิฎาศ์ จันทร์เทวาลิขิต</p>
                 <p><strong>แผนการเรียน:</strong> Gifted (ห้องเรียนพิเศษวิทยาศาสตร์-คณิตศาสตร์)</p>
             </div>
 
+            <!--ส่วนประวัติส่วนตัว-->
+            <div class="info-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0;">
+                <h3 style="color: #1e293b;">ประวัติส่วนตัว</h3>
+                <p><strong>วัน/เดือน/ปีเกิด:</strong> 30 กรกฎาคม 2552</p>
+                <p><strong>ประวัติการศึกษา (ระดับประถมศึกษา):</strong> โรงเรียนอนุบาลบ้านบึง (อำนาจคณูปถัมภ์)</p>
+                <p><strong>งานอดิเรก:</strong> ดูหนัง, ฟังเพลง, เล่นเกม และหาความรู้ใหม่ๆ อยู่เสมอ</p>
+            </div>
+
+            <!--ส่วนข้อดี / จุดเด่น-->
+            <div class="highlight-box">
+                <h3>ข้อดี / จุดเด่น</h3>
+                <p>มีทักษะการแก้ไขปัญหาเฉพาะหน้าได้ดี ปรับตัวเก่ง เรียนรู้เร็ว และทำงานร่วมกับผู้อื่นได้เป็นอย่างดี</p>
+            </div>
+
+            <!--ช่องทางการติดต่อ-->
             <div class="contact-box">
                 <h3>ช่องทางการติดต่อ</h3>
                 <ul class="contact-list">
                     <li>📷 <strong>Instagram:</strong> <a href="https://instagram.com/sezxnq" target="_blank">sezxnq</a></li>
-                    <li>ผู้ใช้ <strong>Facebook:</strong> <a href="https://facebook.com/onnida chanthewalikhit" target="_blank">onnida chanthewalikhit</a></li>
+                    <li>👤 <strong>Facebook:</strong> <a href="https://facebook.com/onnida chanthewalikhit" target="_blank">onnida chanthewalikhit</a></li>
                     <li>✉️ <strong>Gmail:</strong> <a href="mailto:s34884@banbung.ac.th">s34884@banbung.ac.th</a></li>
                 </ul>
             </div>
+
         </div>
     </div>
 
