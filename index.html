@@ -13,26 +13,114 @@
         }
 
         body {
-            /* พื้นหลังไล่สีชมพูพาสเทลละมุน + เล่นแสงระยิบระยับ */
-            background: radial-gradient(circle at 10% 20%, rgba(255, 224, 233, 0.8) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(255, 209, 227, 0.8) 0%, transparent 40%),
-                        linear-gradient(135deg, #fff0f5 0%, #ffd1dc 50%, #ffe4e1 100%);
-            background-attachment: fixed;
+            background-color: #fff0f5;
             color: #5c3a47;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
+
+        /* --- พื้นหลังเงาแอนิเมชันเรืองแสงลอยขยับเบาๆ (Background Blobs & Light Effects) --- */
+        .bg-glow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .glow-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: floatGlow 12s infinite ease-in-out alternate;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: #ffb6c1;
+            top: -100px;
+            left: -100px;
+            animation-duration: 10s;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: #ffd1dc;
+            bottom: -150px;
+            right: -100px;
+            animation-duration: 14s;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: #ffe4e1;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-duration: 16s;
+        }
+
+        @keyframes floatGlow {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            50% {
+                transform: translate(40px, 60px) scale(1.15) rotate(90deg);
+            }
+            100% {
+                transform: translate(-30px, 30px) scale(0.9) rotate(180deg);
+            }
+        }
+
+        /* --- เอฟเฟกต์ดวงดาววิ้งค์ๆ ดริฟท์ลอยผ่านพื้นหลัง (Sparkle Animation) --- */
+        .sparkle {
+            position: absolute;
+            color: #ff8da1;
+            font-size: 18px;
+            opacity: 0.5;
+            animation: floatSparkle 8s infinite linear;
+        }
+
+        @keyframes floatSparkle {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* ตำแหน่งการลอยของดาววิ้งค์แต่ละดวง */
+        .sp-1 { left: 10%; animation-delay: 0s; animation-duration: 9s; }
+        .sp-2 { left: 25%; animation-delay: 3s; animation-duration: 11s; }
+        .sp-3 { left: 55%; animation-delay: 1s; animation-duration: 8s; }
+        .sp-4 { left: 75%; animation-delay: 4s; animation-duration: 12s; }
+        .sp-5 { left: 90%; animation-delay: 2s; animation-duration: 10s; }
 
         /* Navbar ด้านบนแบบฟรุ้งฟริ้งเล่นแสง */
         .navbar {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(255, 182, 193, 0.4);
-            border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 20px rgba(255, 182, 193, 0.35);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.9);
         }
 
         .navbar ul {
@@ -52,7 +140,7 @@
             font-size: 14px;
             transition: all 0.3s ease;
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
             border: 1px solid rgba(255, 192, 203, 0.5);
         }
 
@@ -72,21 +160,27 @@
 
         /* การ์ดแก้วมุกใส (Glassmorphism) เล่นแสงเงาประกาย */
         .card {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.82);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-radius: 24px;
             padding: 35px;
-            box-shadow: 0 10px 35px rgba(235, 130, 160, 0.2), 
-                        inset 0 0 15px rgba(255, 255, 255, 0.9);
-            border: 2px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 35px rgba(235, 130, 160, 0.25), 
+                        inset 0 0 20px rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.95);
             margin-bottom: 25px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            animation: cardFloat 6s ease-in-out infinite alternate;
         }
 
-        /* ตกแต่งไอคอนฟรุ้งฟริ้งลอยๆ */
+        /* การ์ดลอยขึ้นลงเบาๆ */
+        @keyframes cardFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-6px); }
+        }
+
         .card::before {
             content: "✨";
             position: absolute;
@@ -107,7 +201,7 @@
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
         .tab-content.active {
@@ -119,7 +213,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* รูปโปรไฟล์กรอบเปล่งออร่า */
+        /* รูปโปรไฟล์ */
         .profile-img-wrapper {
             position: relative;
             display: inline-block;
@@ -132,7 +226,7 @@
             object-fit: cover;
             border-radius: 50%;
             border: 5px solid #ffffff;
-            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.35);
             transition: transform 0.3s ease;
         }
 
@@ -140,9 +234,9 @@
             transform: scale(1.03) rotate(2deg);
         }
 
-        /* บล็อกเนื้อหาการ์ดหวานๆ */
+        /* บล็อกเนื้อหา */
         .info-box {
-            background: linear-gradient(135deg, rgba(255, 240, 245, 0.9), rgba(255, 228, 233, 0.9));
+            background: linear-gradient(135deg, rgba(255, 240, 245, 0.95), rgba(255, 228, 233, 0.95));
             border-radius: 16px;
             padding: 22px;
             text-align: left;
@@ -228,7 +322,7 @@
             line-height: 1.6;
         }
 
-        /* บล็อกการศึกษาแนวเภสัชสุดคิ้วท์ */
+        /* บล็อกการศึกษา */
         .edu-card {
             background: #ffffff;
             border-radius: 16px;
@@ -254,7 +348,18 @@
 </head>
 <body>
 
-    <!-- แถบเมนูด้านบน -->
+    <div class="bg-glow-container">
+        <div class="glow-blob blob-1"></div>
+        <div class="glow-blob blob-2"></div>
+        <div class="glow-blob blob-3"></div>
+
+        <div class="sparkle sp-1">✨</div>
+        <div class="sparkle sp-2">🌸</div>
+        <div class="sparkle sp-3">✨</div>
+        <div class="sparkle sp-4">💊</div>
+        <div class="sparkle sp-5">✨</div>
+    </div>
+
     <nav class="navbar">
         <ul>
             <li><a class="nav-link active" onclick="switchTab('home')">🌸 หน้าแรก</a></li>
@@ -266,11 +371,9 @@
         </ul>
     </nav>
 
-    <!-- ส่วนเนื้อหาหลัก -->
     <div class="container">
         <div class="card">
 
-            <!-- หน้า 1: หน้าแรก -->
             <div id="home" class="tab-content active">
                 <div class="profile-img-wrapper">
                     <img src="https://via.placeholder.com/200" alt="รูปโปรไฟล์" class="profile-img">
@@ -292,7 +395,6 @@
                 </div>
             </div>
 
-            <!-- หน้า 2: คำนำ -->
             <div id="intro" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">📖 คำนำ</h2>
                 <div class="info-box">
@@ -309,7 +411,6 @@
                 </div>
             </div>
 
-            <!-- หน้า 3: ประวัติส่วนตัว -->
             <div id="profile" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">🎀 ประวัติส่วนตัว</h2>
                 <div class="info-box">
@@ -325,7 +426,6 @@
                 </div>
             </div>
 
-            <!-- หน้า 4: ความสนใจในการศึกษาต่อ -->
             <div id="education" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">💊 ความสนใจในการศึกษาต่อ</h2>
                 
@@ -338,7 +438,6 @@
                 </div>
             </div>
 
-            <!-- หน้า 5: กิจกรรม -->
             <div id="activities" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">✨ กิจกรรมที่เข้าร่วม</h2>
                 <div class="info-box">
@@ -346,7 +445,6 @@
                 </div>
             </div>
 
-            <!-- หน้า 6: ความสามารถพิเศษ -->
             <div id="skills" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">💖 ความสามารถพิเศษ</h2>
                 <div class="info-box">
@@ -357,7 +455,6 @@
         </div>
     </div>
 
-    <!-- สคริปต์สลับหน้า -->
     <script>
         function switchTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
