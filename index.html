@@ -359,6 +359,57 @@
             color: #ad1457;
             font-size: 16px;
         }
+
+        /* กรอบกิจกรรม */
+        .activity-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            border: 2px solid #ffd1dc;
+            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(255, 105, 180, 0.3);
+            border-color: #ff8da1;
+        }
+
+        .activity-img-wrapper {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 15px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 3px solid #fff0f5;
+        }
+
+        .activity-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .activity-card h3 {
+            color: #c2185b;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .activity-card p {
+            color: #6b3e52;
+            font-size: 14px;
+            line-height: 1.7;
+            text-align: left;
+            background: #fff0f5;
+            padding: 12px 16px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -462,8 +513,15 @@
 
             <div id="activities" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">✨ กิจกรรมที่เข้าร่วม</h2>
-                <div class="info-box">
-                    <p>กำลังรวบรวมข้อมูลกิจกรรม...</p>
+                
+                <div class="activity-card">
+                    <div class="activity-img-wrapper">
+                        <img src="S27320376.jpg" alt="เกียรติบัตรการฝึกปฏิบัติงาน" class="activity-img">
+                    </div>
+                    <h3>🏥 การฝึกปฏิบัติงาน ณ โรงพยาบาลบ้านบึง</h3>
+                    <p>
+                        ได้เข้าร่วมรับการฝึกปฏิบัติงานจริง ณ กลุ่มงานการพยาบาล โรงพยาบาลบ้านบึง (โรงพยาบาลของรัฐบาล) ระหว่างวันที่ 1, 5-8 พฤษภาคม พ.ศ. 2569 เพื่อเรียนรู้ทักษะการทำงานในสายงานด้านการแพทย์ การพยาบาล และระบบการดูแลผู้ป่วยอย่างเป็นมืออาชีพ
+                    </p>
                 </div>
             </div>
 
