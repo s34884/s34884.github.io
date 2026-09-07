@@ -384,12 +384,12 @@
 
     <nav class="navbar">
         <ul>
-            <li><a class="nav-link active" onclick="switchTab('home')">🌸 หน้าแรก</a></li>
-            <li><a class="nav-link" onclick="switchTab('intro')">📖 คำนำ</a></li>
-            <li><a class="nav-link" onclick="switchTab('profile')">🎀 ประวัติส่วนตัว</a></li>
-            <li><a class="nav-link" onclick="switchTab('education')">💊 ความสนใจในการศึกษาต่อ</a></li>
-            <li><a class="nav-link" onclick="switchTab('activities')">✨ กิจกรรม</a></li>
-            <li><a class="nav-link" onclick="switchTab('skills')">💖 ความสามารถพิเศษ</a></li>
+            <li><a class="nav-link active" onclick="switchTab('home', event)">🌸 หน้าแรก</a></li>
+            <li><a class="nav-link" onclick="switchTab('intro', event)">📖 คำนำ</a></li>
+            <li><a class="nav-link" onclick="switchTab('profile', event)">🎀 ประวัติส่วนตัว</a></li>
+            <li><a class="nav-link" onclick="switchTab('education', event)">💊 ความสนใจในการศึกษาต่อ</a></li>
+            <li><a class="nav-link" onclick="switchTab('activities', event)">✨ กิจกรรม</a></li>
+            <li><a class="nav-link" onclick="switchTab('skills', event)">💖 ความสามารถพิเศษ</a></li>
         </ul>
     </nav>
 
@@ -398,7 +398,7 @@
 
             <div id="home" class="tab-content active">
                 <div class="profile-img-wrapper">
-                    <img src="S_27320348.jpg" alt="รูปโปรไฟล์ อรณิฎาศ์" class="profile-img">
+                    <img src="./S_27320348.jpg" alt="รูปโปรไฟล์ อรณิฎาศ์" class="profile-img">
                 </div>
                 
                 <div class="info-box">
@@ -478,7 +478,7 @@
     </div>
 
     <script>
-        function switchTab(tabId) {
+        function switchTab(tabId, event) {
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
@@ -486,7 +486,9 @@
             links.forEach(link => link.classList.remove('active'));
 
             document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
         }
     </script>
 
