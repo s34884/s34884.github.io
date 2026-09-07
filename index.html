@@ -13,39 +13,54 @@
         }
 
         body {
-            background-color: #f0f4f8;
-            color: #333;
+            /* พื้นหลังไล่สีชมพูพาสเทลละมุน + เล่นแสงระยิบระยับ */
+            background: radial-gradient(circle at 10% 20%, rgba(255, 224, 233, 0.8) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(255, 209, 227, 0.8) 0%, transparent 40%),
+                        linear-gradient(135deg, #fff0f5 0%, #ffd1dc 50%, #ffe4e1 100%);
+            background-attachment: fixed;
+            color: #5c3a47;
+            min-height: 100vh;
         }
 
-        /* Navbar ด้านบน */
+        /* Navbar ด้านบนแบบฟรุ้งฟริ้งเล่นแสง */
         .navbar {
-            background-color: #1e293b;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 182, 193, 0.4);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.8);
         }
 
         .navbar ul {
             display: flex;
             justify-content: center;
             list-style: none;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .navbar a {
-            color: #ffffff;
+            color: #8b4567;
+            font-weight: 600;
             text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 15px;
-            transition: 0.3s;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.3s ease;
             cursor: pointer;
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 192, 203, 0.5);
         }
 
         .navbar a:hover, .navbar a.active {
-            background-color: #3b82f6;
+            background: linear-gradient(135deg, #ffb6c1, #ff8da1);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(255, 141, 161, 0.5);
+            transform: translateY(-2px);
         }
 
         /* Container หลัก */
@@ -55,65 +70,116 @@
             padding: 0 20px;
         }
 
-        /* การ์ดเนื้อหา */
+        /* การ์ดแก้วมุกใส (Glassmorphism) เล่นแสงเงาประกาย */
         .card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 35px rgba(235, 130, 160, 0.2), 
+                        inset 0 0 15px rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.9);
             margin-bottom: 25px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* ซ่อนเนื้อหาของแต่ละหน้าไว้ก่อน */
+        /* ตกแต่งไอคอนฟรุ้งฟริ้งลอยๆ */
+        .card::before {
+            content: "✨";
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 20px;
+            opacity: 0.7;
+        }
+
+        .card::after {
+            content: "💊";
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            font-size: 22px;
+            opacity: 0.5;
+        }
+
         .tab-content {
             display: none;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
-        /* แสดงเฉพาะหน้าที่เปิดอยู่ */
         .tab-content.active {
             display: block;
         }
 
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 12px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* รูปโปรไฟล์กรอบเปล่งออร่า */
+        .profile-img-wrapper {
+            position: relative;
+            display: inline-block;
             margin-bottom: 20px;
         }
 
+        .profile-img {
+            width: 190px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.03) rotate(2deg);
+        }
+
+        /* บล็อกเนื้อหาการ์ดหวานๆ */
         .info-box {
-            background-color: #e0f2fe;
-            border-radius: 10px;
-            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 240, 245, 0.9), rgba(255, 228, 233, 0.9));
+            border-radius: 16px;
+            padding: 22px;
             text-align: left;
             margin-top: 20px;
+            border: 1px solid #ffd1dc;
+            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.15);
         }
 
         .info-box h3 {
-            color: #0369a1;
+            color: #d81b60;
             margin-bottom: 12px;
             font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .info-box p {
             margin: 8px 0;
-            color: #0f172a;
+            color: #6b3e52;
             font-size: 15px;
             line-height: 1.8;
         }
 
+        /* ช่องทางการติดต่อ */
         .contact-box {
-            background-color: #f1f5f9;
-            border-radius: 10px;
-            padding: 20px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 22px;
             text-align: left;
             margin-top: 20px;
+            border: 1px dashed #ffb6c1;
+            box-shadow: 0 4px 15px rgba(255, 192, 203, 0.2);
         }
 
         .contact-box h3 {
-            color: #334155;
+            color: #c2185b;
             margin-bottom: 12px;
             font-size: 18px;
         }
@@ -128,47 +194,60 @@
         }
 
         .contact-list a {
-            color: #2563eb;
+            color: #e91e63;
             text-decoration: none;
             font-weight: 600;
+            transition: color 0.2s;
         }
 
         .contact-list a:hover {
+            color: #ad1457;
             text-decoration: underline;
         }
 
+        /* ไฮไลต์ข้อดี/จุดเด่น */
         .highlight-box {
-            background-color: #f0fdf4;
-            border-left: 4px solid #22c55e;
-            border-radius: 6px;
-            padding: 15px 20px;
+            background: linear-gradient(135deg, #fff5f8, #ffe3ec);
+            border-left: 5px solid #ff4081;
+            border-radius: 12px;
+            padding: 18px 22px;
             text-align: left;
             margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(255, 64, 129, 0.1);
         }
 
         .highlight-box h3 {
-            color: #15803d;
+            color: #c2185b;
             margin-bottom: 8px;
             font-size: 18px;
         }
 
         .highlight-box p {
-            color: #166534;
+            color: #70364d;
             font-size: 15px;
             line-height: 1.6;
         }
 
+        /* บล็อกการศึกษาแนวเภสัชสุดคิ้วท์ */
         .edu-card {
-            background-color: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 12px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-top: 15px;
             text-align: left;
+            border: 2px solid #ffe4e1;
+            box-shadow: 0 6px 18px rgba(255, 182, 193, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .edu-card:hover {
+            transform: translateY(-3px);
+            border-color: #ffb6c1;
+            box-shadow: 0 8px 22px rgba(255, 105, 180, 0.3);
         }
 
         .edu-card h4 {
-            color: #1e293b;
+            color: #ad1457;
             font-size: 16px;
         }
     </style>
@@ -178,12 +257,12 @@
     <!-- แถบเมนูด้านบน -->
     <nav class="navbar">
         <ul>
-            <li><a class="nav-link active" onclick="switchTab('home')">หน้าแรก</a></li>
-            <li><a class="nav-link" onclick="switchTab('intro')">คำนำ</a></li>
-            <li><a class="nav-link" onclick="switchTab('profile')">ประวัติส่วนตัว</a></li>
-            <li><a class="nav-link" onclick="switchTab('education')">ความสนใจในการศึกษาต่อ</a></li>
-            <li><a class="nav-link" onclick="switchTab('activities')">กิจกรรม</a></li>
-            <li><a class="nav-link" onclick="switchTab('skills')">ความสามารถพิเศษ</a></li>
+            <li><a class="nav-link active" onclick="switchTab('home')">🌸 หน้าแรก</a></li>
+            <li><a class="nav-link" onclick="switchTab('intro')">📖 คำนำ</a></li>
+            <li><a class="nav-link" onclick="switchTab('profile')">🎀 ประวัติส่วนตัว</a></li>
+            <li><a class="nav-link" onclick="switchTab('education')">💊 ความสนใจในการศึกษาต่อ</a></li>
+            <li><a class="nav-link" onclick="switchTab('activities')">✨ กิจกรรม</a></li>
+            <li><a class="nav-link" onclick="switchTab('skills')">💖 ความสามารถพิเศษ</a></li>
         </ul>
     </nav>
 
@@ -193,16 +272,18 @@
 
             <!-- หน้า 1: หน้าแรก -->
             <div id="home" class="tab-content active">
-                <img src="https://via.placeholder.com/200" alt="รูปโปรไฟล์" class="profile-img">
+                <div class="profile-img-wrapper">
+                    <img src="https://via.placeholder.com/200" alt="รูปโปรไฟล์" class="profile-img">
+                </div>
                 
                 <div class="info-box">
-                    <h3>แนะนำตัว</h3>
+                    <h3>🌸 แนะนำตัว</h3>
                     <p><strong>ชื่อ-นามสกุล:</strong> นางสาวอรณิฎาศ์ จันทร์เทวาลิขิต</p>
                     <p><strong>แผนการเรียน:</strong> Gifted (ห้องเรียนพิเศษวิทยาศาสตร์-คณิตศาสตร์)</p>
                 </div>
 
                 <div class="contact-box">
-                    <h3>ช่องทางการติดต่อ</h3>
+                    <h3>💌 ช่องทางการติดต่อ</h3>
                     <ul class="contact-list">
                         <li>📷 <strong>Instagram:</strong> <a href="https://instagram.com/sezxnq" target="_blank">sezxnq</a></li>
                         <li>👤 <strong>Facebook:</strong> <a href="https://facebook.com/onnida chanthewalikhit" target="_blank">onnida chanthewalikhit</a></li>
@@ -213,7 +294,7 @@
 
             <!-- หน้า 2: คำนำ -->
             <div id="intro" class="tab-content">
-                <h2 style="color: #1e293b; margin-bottom: 15px;">คำนำ</h2>
+                <h2 style="color: #c2185b; margin-bottom: 15px;">📖 คำนำ</h2>
                 <div class="info-box">
                     <p style="text-indent: 30px;">แฟ้มสะสมผลงาน (Portfolio) ฉบับนี้ จัดทำขึ้นเพื่อรวบรวมประวัติการศึกษา ความรู้ ทักษะ ผลงาน และกิจกรรมต่าง ๆ ของข้าพเจ้า เพื่อใช้เป็นเอกสารประกอบการพิจารณาเข้าศึกษาต่อในระดับอุดมศึกษา</p>
                     
@@ -221,7 +302,7 @@
                     
                     <p style="text-indent: 30px; margin-top: 10px;">ข้าพเจ้าหวังเป็นอย่างยิ่งว่าแฟ้มสะสมผลงานเล่มนี้ จะช่วยให้คณะกรรมการได้เห็นถึงความตั้งใจจริงของข้าพเจ้า หากมีข้อผิดพลาดประการใด ข้าพเจ้าขออภัยมา ณ ที่นี้</p>
                     
-                    <p style="text-align: right; margin-top: 20px; font-weight: bold;">
+                    <p style="text-align: right; margin-top: 20px; font-weight: bold; color: #d81b60;">
                         (อรณิฎาศ์ จันทร์เทวาลิขิต)<br>
                         ผู้จัดทำ
                     </p>
@@ -230,8 +311,8 @@
 
             <!-- หน้า 3: ประวัติส่วนตัว -->
             <div id="profile" class="tab-content">
-                <h2 style="color: #1e293b; margin-bottom: 15px;">ประวัติส่วนตัว</h2>
-                <div class="info-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0;">
+                <h2 style="color: #c2185b; margin-bottom: 15px;">🎀 ประวัติส่วนตัว</h2>
+                <div class="info-box">
                     <p><strong>ชื่อ-นามสกุล:</strong> นางสาวอรณิฎาศ์ จันทร์เทวาลิขิต</p>
                     <p><strong>วัน/เดือน/ปีเกิด:</strong> 30 กรกฎาคม 2552</p>
                     <p><strong>ประวัติการศึกษา (ระดับประถมศึกษา):</strong> โรงเรียนอนุบาลบ้านบึง (อำนาจคณูปถัมภ์)</p>
@@ -239,27 +320,27 @@
                 </div>
 
                 <div class="highlight-box">
-                    <h3>ข้อดี / จุดเด่น</h3>
+                    <h3>💖 ข้อดี / จุดเด่น</h3>
                     <p>มีทักษะการแก้ไขปัญหาเฉพาะหน้าได้ดี ปรับตัวเก่ง เรียนรู้เร็ว และทำงานร่วมกับผู้อื่นได้เป็นอย่างดี</p>
                 </div>
             </div>
 
             <!-- หน้า 4: ความสนใจในการศึกษาต่อ -->
             <div id="education" class="tab-content">
-                <h2 style="color: #1e293b; margin-bottom: 15px;">ความสนใจในการศึกษาต่อ</h2>
+                <h2 style="color: #c2185b; margin-bottom: 15px;">💊 ความสนใจในการศึกษาต่อ</h2>
                 
                 <div class="edu-card">
-                    <h4>🎓 คณะเภสัชศาสตร์ มหาวิทยาลัยศิลปากร</h4>
+                    <h4>🧪 คณะเภสัชศาสตร์ มหาวิทยาลัยศิลปากร</h4>
                 </div>
                 
                 <div class="edu-card">
-                    <h4>🎓 คณะพยาบาลศาสตร์ มหาวิทยาลัยบูรพา</h4>
+                    <h4>🩺 คณะพยาบาลศาสตร์ มหาวิทยาลัยบูรพา</h4>
                 </div>
             </div>
 
             <!-- หน้า 5: กิจกรรม -->
             <div id="activities" class="tab-content">
-                <h2 style="color: #1e293b; margin-bottom: 15px;">กิจกรรมที่เข้าร่วม</h2>
+                <h2 style="color: #c2185b; margin-bottom: 15px;">✨ กิจกรรมที่เข้าร่วม</h2>
                 <div class="info-box">
                     <p>กำลังรวบรวมข้อมูลกิจกรรม...</p>
                 </div>
@@ -267,7 +348,7 @@
 
             <!-- หน้า 6: ความสามารถพิเศษ -->
             <div id="skills" class="tab-content">
-                <h2 style="color: #1e293b; margin-bottom: 15px;">ความสามารถพิเศษ</h2>
+                <h2 style="color: #c2185b; margin-bottom: 15px;">💖 ความสามารถพิเศษ</h2>
                 <div class="info-box">
                     <p>กำลังรวบรวมข้อมูลความสามารถพิเศษ...</p>
                 </div>
