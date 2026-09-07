@@ -41,6 +41,7 @@
             border-radius: 6px;
             font-size: 15px;
             transition: 0.3s;
+            cursor: pointer;
         }
 
         .navbar a:hover, .navbar a.active {
@@ -64,6 +65,16 @@
             text-align: center;
         }
 
+        /* ซ่อนเนื้อหาของแต่ละหน้าไว้ก่อน */
+        .tab-content {
+            display: none;
+        }
+
+        /* แสดงเฉพาะหน้าที่เปิดอยู่ */
+        .tab-content.active {
+            display: block;
+        }
+
         .profile-img {
             width: 200px;
             height: 200px;
@@ -72,7 +83,6 @@
             margin-bottom: 20px;
         }
 
-        /* กล่องเนื้อหาแบบบล็อก */
         .info-box {
             background-color: #e0f2fe;
             border-radius: 10px;
@@ -94,7 +104,6 @@
             line-height: 1.6;
         }
 
-        /* ช่องทางการติดต่อ */
         .contact-box {
             background-color: #f1f5f9;
             border-radius: 10px;
@@ -128,7 +137,6 @@
             text-decoration: underline;
         }
 
-        /* บล็อกเน้นข้อดี/จุดเด่น */
         .highlight-box {
             background-color: #f0fdf4;
             border-left: 4px solid #22c55e;
@@ -153,57 +161,109 @@
 </head>
 <body>
 
-    <!--แถบเมนูด้านบน-->
+    <!-- แถบเมนูด้านบน -->
     <nav class="navbar">
         <ul>
-            <li><a href="#" class="active">หน้าแรก</a></li>
-            <li><a href="#">คำนำ</a></li>
-            <li><a href="#">ประวัติส่วนตัว</a></li>
-            <li><a href="#">ความสนใจในการศึกษาต่อ</a></li>
-            <li><a href="#">กิจกรรม</a></li>
-            <li><a href="#">ความสามารถพิเศษ</a></li>
+            <li><a class="nav-link active" onclick="switchTab('home')">หน้าแรก</a></li>
+            <li><a class="nav-link" onclick="switchTab('intro')">คำนำ</a></li>
+            <li><a class="nav-link" onclick="switchTab('profile')">ประวัติส่วนตัว</a></li>
+            <li><a class="nav-link" onclick="switchTab('education')">ความสนใจในการศึกษาต่อ</a></li>
+            <li><a class="nav-link" onclick="switchTab('activities')">กิจกรรม</a></li>
+            <li><a class="nav-link" onclick="switchTab('skills')">ความสามารถพิเศษ</a></li>
         </ul>
     </nav>
 
-    <!--ส่วนเนื้อหาหลัก-->
+    <!-- ส่วนเนื้อหาหลัก -->
     <div class="container">
         <div class="card">
-            <!--รูปโปรไฟล์-->
-            <img src="https://via.placeholder.com/200" alt="รูปโปรไฟล์" class="profile-img">
-            
-            <!--ส่วนแนะนำตัวหลัก-->
-            <div class="info-box">
-                <h3>แนะนำตัว</h3>
-                <p><strong>ชื่อ-นามสกุล:</strong> นางสาวอรณิฎาศ์ จันทร์เทวาลิขิต</p>
-                <p><strong>แผนการเรียน:</strong> Gifted (ห้องเรียนพิเศษวิทยาศาสตร์-คณิตศาสตร์)</p>
+
+            <!-- หน้า 1: หน้าแรก -->
+            <div id="home" class="tab-content active">
+                <img src="https://via.placeholder.com/200" alt="รูปโปรไฟล์" class="profile-img">
+                
+                <div class="info-box">
+                    <h3>แนะนำตัว</h3>
+                    <p><strong>ชื่อ-นามสกุล:</strong> นางสาวอรณิฎาศ์ จันทร์เทวาลิขิต</p>
+                    <p><strong>แผนการเรียน:</strong> Gifted (ห้องเรียนพิเศษวิทยาศาสตร์-คณิตศาสตร์)</p>
+                </div>
+
+                <div class="contact-box">
+                    <h3>ช่องทางการติดต่อ</h3>
+                    <ul class="contact-list">
+                        <li>📷 <strong>Instagram:</strong> <a href="https://instagram.com/sezxnq" target="_blank">sezxnq</a></li>
+                        <li>👤 <strong>Facebook:</strong> <a href="https://facebook.com/onnida chanthewalikhit" target="_blank">onnida chanthewalikhit</a></li>
+                        <li>✉️ <strong>Gmail:</strong> <a href="mailto:s34884@banbung.ac.th">s34884@banbung.ac.th</a></li>
+                    </ul>
+                </div>
             </div>
 
-            <!--ส่วนประวัติส่วนตัว-->
-            <div class="info-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0;">
-                <h3 style="color: #1e293b;">ประวัติส่วนตัว</h3>
-                <p><strong>วัน/เดือน/ปีเกิด:</strong> 30 กรกฎาคม 2552</p>
-                <p><strong>ประวัติการศึกษา (ระดับประถมศึกษา):</strong> โรงเรียนอนุบาลบ้านบึง (อำนาจคณูปถัมภ์)</p>
-                <p><strong>งานอดิเรก:</strong> ดูหนัง, ฟังเพลง, เล่นเกม และหาความรู้ใหม่ๆ อยู่เสมอ</p>
+            <!-- หน้า 2: คำนำ -->
+            <div id="intro" class="tab-content">
+                <h2 style="color: #1e293b; margin-bottom: 15px;">คำนำ</h2>
+                <div class="info-box">
+                    <p>แฟ้มสะสมผลงาน (Portfolio) เล่มนี้ จัดทำขึ้นเพื่อเป็นตัวแทนในการนำเสนอข้อมูลเกี่ยวกับประวัติส่วนตัว ความรู้ ความสามารถ ทักษะ ตลอดจนความสนใจในการศึกษาต่อ...</p>
+                </div>
             </div>
 
-            <!--ส่วนข้อดี / จุดเด่น-->
-            <div class="highlight-box">
-                <h3>ข้อดี / จุดเด่น</h3>
-                <p>มีทักษะการแก้ไขปัญหาเฉพาะหน้าได้ดี ปรับตัวเก่ง เรียนรู้เร็ว และทำงานร่วมกับผู้อื่นได้เป็นอย่างดี</p>
+            <!-- หน้า 3: ประวัติส่วนตัว -->
+            <div id="profile" class="tab-content">
+                <h2 style="color: #1e293b; margin-bottom: 15px;">ประวัติส่วนตัว</h2>
+                <div class="info-box" style="background-color: #f8fafc; border: 1px solid #e2e8f0;">
+                    <p><strong>ชื่อ-นามสกุล:</strong> นางสาวอรณิฎาศ์ จันทร์เทวาลิขิต</p>
+                    <p><strong>วัน/เดือน/ปีเกิด:</strong> 30 กรกฎาคม 2552</p>
+                    <p><strong>ประวัติการศึกษา (ระดับประถมศึกษา):</strong> โรงเรียนอนุบาลบ้านบึง (อำนาจคณูปถัมภ์)</p>
+                    <p><strong>งานอดิเรก:</strong> ดูหนัง, ฟังเพลง, เล่นเกม และหาความรู้ใหม่ๆ อยู่เสมอ</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>ข้อดี / จุดเด่น</h3>
+                    <p>มีทักษะการแก้ไขปัญหาเฉพาะหน้าได้ดี ปรับตัวเก่ง เรียนรู้เร็ว และทำงานร่วมกับผู้อื่นได้เป็นอย่างดี</p>
+                </div>
             </div>
 
-            <!--ช่องทางการติดต่อ-->
-            <div class="contact-box">
-                <h3>ช่องทางการติดต่อ</h3>
-                <ul class="contact-list">
-                    <li>📷 <strong>Instagram:</strong> <a href="https://instagram.com/sezxnq" target="_blank">sezxnq</a></li>
-                    <li>👤 <strong>Facebook:</strong> <a href="https://facebook.com/onnida chanthewalikhit" target="_blank">onnida chanthewalikhit</a></li>
-                    <li>✉️ <strong>Gmail:</strong> <a href="mailto:s34884@banbung.ac.th">s34884@banbung.ac.th</a></li>
-                </ul>
+            <!-- หน้า 4: ความสนใจในการศึกษาต่อ -->
+            <div id="education" class="tab-content">
+                <h2 style="color: #1e293b; margin-bottom: 15px;">ความสนใจในการศึกษาต่อ</h2>
+                <div class="info-box">
+                    <p>สนใจศึกษาต่อในสายงาน วิทยาศาสตร์สุขภาพ (Health Science)</p>
+                </div>
+            </div>
+
+            <!-- หน้า 5: กิจกรรม -->
+            <div id="activities" class="tab-content">
+                <h2 style="color: #1e293b; margin-bottom: 15px;">กิจกรรมที่เข้าร่วม</h2>
+                <div class="info-box">
+                    <p>กำลังรวบรวมข้อมูลกิจกรรม...</p>
+                </div>
+            </div>
+
+            <!-- หน้า 6: ความสามารถพิเศษ -->
+            <div id="skills" class="tab-content">
+                <h2 style="color: #1e293b; margin-bottom: 15px;">ความสามารถพิเศษ</h2>
+                <div class="info-box">
+                    <p>กำลังรวบรวมข้อมูลความสามารถพิเศษ...</p>
+                </div>
             </div>
 
         </div>
     </div>
+
+    <!-- สคริปต์สำหรับสลับหน้าเมื่อคลิกเมนู -->
+    <script>
+        function switchTab(tabId) {
+            // ซ่อนเนื้อหาทุกหน้า
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // เอาสถานะ active ออกจากทุกเมนู
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => link.classList.remove('active'));
+
+            // แสดงเนื้อหาและไฮไลต์เมนูที่ถูกกด
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
