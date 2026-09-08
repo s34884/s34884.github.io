@@ -114,6 +114,11 @@
         .p9  { width: 10px; height: 13px; left: 25%;  animation-duration: 14s; animation-delay: 6s; }
         .p10 { width: 13px; height: 17px; left: 75%;  animation-duration: 10s; animation-delay: 7s; }
 
+        /* Radio Buttons สลับหน้า */
+        input[type="radio"] {
+            display: none;
+        }
+
         /* Navbar แถบเมนูด้านบน */
         .navbar {
             background: rgba(255, 255, 255, 0.9);
@@ -154,15 +159,19 @@
             border: 1px solid rgba(255, 192, 203, 0.8);
             white-space: nowrap;
             user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            outline: none;
         }
 
-        .nav-btn.active {
-            background: linear-gradient(135deg, #ffb6c1, #ff8da1) !important;
-            color: #ffffff !important;
+        /* Highlight Active Tab */
+        #tab1:checked ~ .navbar label[for="tab1"],
+        #tab2:checked ~ .navbar label[for="tab2"],
+        #tab3:checked ~ .navbar label[for="tab3"],
+        #tab4:checked ~ .navbar label[for="tab4"],
+        #tab5:checked ~ .navbar label[for="tab5"],
+        #tab6:checked ~ .navbar label[for="tab6"] {
+            background: linear-gradient(135deg, #ffb6c1, #ff8da1);
+            color: #ffffff;
             box-shadow: 0 4px 15px rgba(255, 141, 161, 0.5);
-            border-color: transparent !important;
+            border-color: transparent;
         }
 
         /* Container & Card */
@@ -188,11 +197,16 @@
 
         .tab-content {
             display: none;
+            animation: fadeIn 0.35s ease-in-out;
         }
 
-        .tab-content.show {
-            display: block !important;
-            animation: fadeIn 0.35s ease-in-out;
+        #tab1:checked ~ .container .card #content1,
+        #tab2:checked ~ .container .card #content2,
+        #tab3:checked ~ .container .card #content3,
+        #tab4:checked ~ .container .card #content4,
+        #tab5:checked ~ .container .card #content5,
+        #tab6:checked ~ .container .card #content6 {
+            display: block;
         }
 
         @keyframes fadeIn {
@@ -337,14 +351,22 @@
         <div class="sakura-petal p10"></div>
     </div>
 
+    <!-- Radio Controls -->
+    <input type="radio" id="tab1" name="tab" checked>
+    <input type="radio" id="tab2" name="tab">
+    <input type="radio" id="tab3" name="tab">
+    <input type="radio" id="tab4" name="tab">
+    <input type="radio" id="tab5" name="tab">
+    <input type="radio" id="tab6" name="tab">
+
     <nav class="navbar">
         <div class="nav-container">
-            <button class="nav-btn active" onclick="switchTab(event, 'tab1')">🌸 หน้าแรก</button>
-            <button class="nav-btn" onclick="switchTab(event, 'tab2')">📖 คำนำ</button>
-            <button class="nav-btn" onclick="switchTab(event, 'tab3')">🎀 ประวัติส่วนตัว</button>
-            <button class="nav-btn" onclick="switchTab(event, 'tab4')">💊 ความสนใจในการศึกษาต่อ</button>
-            <button class="nav-btn" onclick="switchTab(event, 'tab5')">✨ กิจกรรม</button>
-            <button class="nav-btn" onclick="switchTab(event, 'tab6')">💖 ความสามารถพิเศษ</button>
+            <label for="tab1" class="nav-btn">🌸 หน้าแรก</label>
+            <label for="tab2" class="nav-btn">📖 คำนำ</label>
+            <label for="tab3" class="nav-btn">🎀 ประวัติส่วนตัว</label>
+            <label for="tab4" class="nav-btn">💊 ความสนใจในการศึกษาต่อ</label>
+            <label for="tab5" class="nav-btn">✨ กิจกรรม</label>
+            <label for="tab6" class="nav-btn">💖 ความสามารถพิเศษ</label>
         </div>
     </nav>
 
@@ -352,7 +374,7 @@
         <div class="card">
 
             <!-- หน้า 1: หน้าแรก -->
-            <div id="tab1" class="tab-content show">
+            <div id="content1" class="tab-content">
                 <div class="profile-img-wrapper">
                     <img src="S27320348.jpg" alt="รูปโปรไฟล์ อรณิฎาศ์" class="profile-img">
                 </div>
@@ -372,7 +394,7 @@
             </div>
 
             <!-- หน้า 2: คำนำ -->
-            <div id="tab2" class="tab-content">
+            <div id="content2" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">📖 คำนำ</h2>
                 <div class="info-box">
                     <p style="text-indent: 30px;">แฟ้มสะสมผลงาน (Portfolio) ฉบับนี้ จัดทำขึ้นเพื่อรวบรวมประวัติการศึกษา ความรู้ ทักษะ ผลงาน และกิจกรรมต่าง ๆ ของข้าพเจ้า เพื่อใช้เป็นเอกสารประกอบการพิจารณาเข้าศึกษาต่อในระดับอุดมศึกษา</p>
@@ -385,7 +407,7 @@
             </div>
 
             <!-- หน้า 3: ประวัติส่วนตัว -->
-            <div id="tab3" class="tab-content">
+            <div id="content3" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">🎀 ประวัติส่วนตัว</h2>
                 <div class="info-box">
                     <h3>👤 ข้อมูลทั่วไป</h3>
@@ -414,7 +436,7 @@
             </div>
 
             <!-- หน้า 4: ความสนใจในการศึกษาต่อ -->
-            <div id="tab4" class="tab-content">
+            <div id="content4" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">💊 ความสนใจในการศึกษาต่อ</h2>
                 <div class="edu-card">
                     <img src="sillapakorn.jpg" alt="ตรามหาวิทยาลัยศิลปากร" class="uni-logo">
@@ -435,7 +457,7 @@
             </div>
 
             <!-- หน้า 5: กิจกรรม -->
-            <div id="tab5" class="tab-content">
+            <div id="content5" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">✨ กิจกรรมที่เข้าร่วม</h2>
                 <div class="activity-card">
                     <div class="activity-img-wrapper">
@@ -454,7 +476,7 @@
                 </div>
             </div>
 
-                        <!-- หน้า 6: ความสามารถพิเศษ -->
+            <!-- หน้า 6: ความสามารถพิเศษ -->
             <div id="content6" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">💖 ความสามารถพิเศษ / ทักษะ</h2>
                 
@@ -476,4 +498,9 @@
                     </div>
                 </div>
             </div>
-            
+
+        </div>
+    </div>
+
+</body>
+</html>
