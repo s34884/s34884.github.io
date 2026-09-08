@@ -1,1 +1,557 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - อรณิฎาศ์ จันทร์เทวาลิขิต</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        body {
+            background-color: #fff0f5;
+            color: #5c3a47;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* --- พื้นหลังเงาเรืองแสง --- */
+        .bg-glow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .glow-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: floatGlow 12s infinite ease-in-out alternate;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: #ffb6c1;
+            top: -100px;
+            left: -100px;
+            animation-duration: 10s;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: #ffd1dc;
+            bottom: -150px;
+            right: -100px;
+            animation-duration: 14s;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: #ffe4e1;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-duration: 16s;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            50% { transform: translate(40px, 60px) scale(1.15) rotate(90deg); }
+            100% { transform: translate(-30px, 30px) scale(0.9) rotate(180deg); }
+        }
+
+        /* --- กลีบซากุระร่วง --- */
+        .sakura-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .sakura-petal {
+            position: absolute;
+            background: linear-gradient(135deg, #ffc0cb, #ffb6c1);
+            border-radius: 15px 0px 15px 0px;
+            opacity: 0.45;
+            filter: blur(0.5px);
+            box-shadow: 0 0 8px rgba(255, 182, 193, 0.4);
+            animation: fallSakura linear infinite;
+        }
+
+        @keyframes fallSakura {
+            0% {
+                top: -10%;
+                transform: translateX(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            10% { opacity: 0.45; }
+            90% { opacity: 0.45; }
+            100% {
+                top: 105%;
+                transform: translateX(120px) rotate(450deg) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .p1  { width: 12px; height: 16px; left: 5%;   animation-duration: 9s;  animation-delay: 0s; }
+        .p2  { width: 15px; height: 20px; left: 18%;  animation-duration: 12s; animation-delay: 2s; }
+        .p3  { width: 10px; height: 14px; left: 30%;  animation-duration: 8s;  animation-delay: 4s; }
+        .p4  { width: 14px; height: 18px; left: 42%;  animation-duration: 11s; animation-delay: 1s; }
+        .p5  { width: 11px; height: 15px; left: 55%;  animation-duration: 10s; animation-delay: 3s; }
+        .p6  { width: 16px; height: 22px; left: 68%;  animation-duration: 13s; animation-delay: 5s; }
+        .p7  { width: 12px; height: 16px; left: 80%;  animation-duration: 9s;  animation-delay: 1.5s; }
+        .p8  { width: 14px; height: 19px; left: 92%;  animation-duration: 12s; animation-delay: 3.5s; }
+        .p9  { width: 10px; height: 13px; left: 25%;  animation-duration: 14s; animation-delay: 6s; }
+        .p10 { width: 13px; height: 17px; left: 75%;  animation-duration: 10s; animation-delay: 7s; }
+
+        /* Navbar ด้านบน (สไลด์ข้างได้ ลื่นๆ) */
+        .navbar {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 182, 193, 0.35);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .navbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: flex-start;
+            list-style: none;
+            gap: 10px;
+            padding: 0 10px;
+            width: max-content;
+            margin: 0 auto;
+        }
+
+        .nav-btn {
+            color: #8b4567;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 192, 203, 0.8);
+            outline: none;
+            white-space: nowrap;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: linear-gradient(135deg, #ffb6c1, #ff8da1);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(255, 141, 161, 0.5);
+            transform: translateY(-2px);
+            border-color: transparent;
+        }
+
+        /* Container หลัก */
+        .container {
+            max-width: 800px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        /* การ์ดหลัก */
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 35px rgba(235, 130, 160, 0.25), 
+                        inset 0 0 20px rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.95);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-content {
+            display: none !important;
+        }
+
+        .tab-content.active {
+            display: block !important;
+            animation: fadeIn 0.35s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* รูปโปรไฟล์ */
+        .profile-img-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.35);
+        }
+
+        /* บล็อกเนื้อหา */
+        .info-box {
+            background: linear-gradient(135deg, rgba(255, 240, 245, 0.95), rgba(255, 228, 233, 0.95));
+            border-radius: 16px;
+            padding: 20px;
+            text-align: left;
+            margin-top: 20px;
+            border: 1px solid #ffd1dc;
+            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.15);
+        }
+
+        .info-box h3 {
+            color: #d81b60;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .info-box p {
+            margin: 8px 0;
+            color: #6b3e52;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* ช่องทางการติดต่อ */
+        .contact-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: left;
+            margin-top: 20px;
+            border: 1px dashed #ffb6c1;
+            box-shadow: 0 4px 15px rgba(255, 192, 203, 0.2);
+        }
+
+        .contact-box h3 {
+            color: #c2185b;
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            margin: 10px 0;
+            font-size: 15px;
+        }
+
+        .contact-list a {
+            color: #e91e63;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ไฮไลต์ข้อดี/จุดเด่น และ จุดอ่อน */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff5f8, #ffe3ec);
+            border-left: 5px solid #ff4081;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .weakness-box {
+            background: linear-gradient(135deg, #fffafa, #ffebee);
+            border-left: 5px solid #e57373;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .highlight-box h3 { color: #c2185b; margin-bottom: 6px; }
+        .weakness-box h3 { color: #c62828; margin-bottom: 6px; }
+
+        /* การศึกษา */
+        .edu-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 18px;
+            margin-top: 15px;
+            text-align: left;
+            border: 2px solid #ffe4e1;
+            box-shadow: 0 6px 18px rgba(255, 182, 193, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .uni-logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .edu-details h4 {
+            color: #ad1457;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .edu-details p {
+            color: #6b3e52;
+            font-size: 14px;
+        }
+
+        .sub-text {
+            font-size: 13px !important;
+            color: #8b5b6e !important;
+        }
+
+        /* กิจกรรม */
+        .activity-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 18px;
+            margin-top: 20px;
+            text-align: center;
+            border: 2px solid #ffd1dc;
+            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.25);
+        }
+
+        .activity-img-wrapper {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto 12px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #fff0f5;
+        }
+
+        .activity-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .activity-card h3 {
+            color: #c2185b;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .activity-card p {
+            color: #6b3e52;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: left;
+            background: #fff0f5;
+            padding: 12px;
+            border-radius: 10px;
+        }
+
+        /* ความสามารถ */
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .skill-item {
+            background: #ffffff;
+            border: 1px solid #ffb6c1;
+            color: #d81b60;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow-container">
+        <div class="glow-blob blob-1"></div>
+        <div class="glow-blob blob-2"></div>
+        <div class="glow-blob blob-3"></div>
+    </div>
+
+    <div class="sakura-container">
+        <div class="sakura-petal p1"></div>
+        <div class="sakura-petal p2"></div>
+        <div class="sakura-petal p3"></div>
+        <div class="sakura-petal p4"></div>
+        <div class="sakura-petal p5"></div>
+        <div class="sakura-petal p6"></div>
+        <div class="sakura-petal p7"></div>
+        <div class="sakura-petal p8"></div>
+        <div class="sakura-petal p9"></div>
+        <div class="sakura-petal p10"></div>
+    </div>
+
+    <nav class="navbar">
+        <ul>
+            <li><button type="button" class="nav-btn active" onclick="switchTab('home', this)">🌸 หน้าแรก</button></li>
+            <li><button type="button" class="nav-btn" onclick="switchTab('intro', this)">📖 คำนำ</button></li>
+            <li><button type="button" class="nav-btn" onclick="switchTab('profile', this)">🎀 ประวัติส่วนตัว</button></li>
+            <li><button type="button" class="nav-btn" onclick="switchTab('education', this)">💊 ความสนใจในการศึกษาต่อ</button></li>
+            <li><button type="button" class="nav-btn" onclick="switchTab('activities', this)">✨ กิจกรรม</button></li>
+            <li><button type="button" class="nav-btn" onclick="switchTab('skills', this)">💖 ความสามารถพิเศษ</button></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+
+            <!-- หน้า 1: หน้าแรก -->
+            <div id="home" class="tab-content active">
+                <div class="profile-img-wrapper">
+                    <img src="S27320348.jpg" alt="รูปโปรไฟล์ อรณิฎาศ์" class="profile-img">
+                </div>
+                
+                <div class="info-box">
+                    <h3>🌸 แนะนำตัว</h3>
+                    <p><strong>ชื่อ-นามสกุล:</strong> นางสาวอรณิฎาศ์ จันทร์เทวาลิขิต (ซีน)</p>
+                    <p><strong>แผนการเรียน:</strong> Gifted (ห้องเรียนพิเศษวิทยาศาสตร์-คณิตศาสตร์)</p>
+                </div>
+
+                <div class="contact-box">
+                    <h3>💌 ช่องทางการติดต่อ</h3>
+                    <ul class="contact-list">
+                        <li>📷 <strong>Instagram:</strong> <a href="https://instagram.com/sezxnq" target="_blank">sezxnq</a></li>
+                        <li>👤 <strong>Facebook:</strong> <a href="https://facebook.com/onnida chanthewalikhit" target="_blank">onnida chanthewalikhit</a></li>
+                        <li>✉️ <strong>Gmail:</strong> <a href="mailto:s34884@banbung.ac.th">s34884@banbung.ac.th</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- หน้า 2: คำนำ -->
+            <div id="intro" class="tab-content">
+                <h2 style="color: #c2185b; margin-bottom: 15px;">📖 คำนำ</h2>
+                <div class="info-box">
+                    <p style="text-indent: 30px;">แฟ้มสะสมผลงาน (Portfolio) ฉบับนี้ จัดทำขึ้นเพื่อรวบรวมประวัติการศึกษา ความรู้ ทักษะ ผลงาน และกิจกรรมต่าง ๆ ของข้าพเจ้า เพื่อใช้เป็นเอกสารประกอบการพิจารณาเข้าศึกษาต่อในระดับอุดมศึกษา</p>
+                    
+                    <p style="text-indent: 30px; margin-top: 10px;">การจัดทำเอกสารฉบับนี้มีเป้าหมายเพื่อสะท้อนถึงความพร้อม ความมุ่งมั่น และศักยภาพของข้าพเจ้าในสาขาวิชานี้อย่างเป็นระบบ ข้าพเจ้าขอขอบพระคุณคณะครูโรงเรียนบ้านบึง “อุตสาหกรรมนุเคราะห์” ครอบครัว และเพื่อน ๆ ที่ให้การอบรมสั่งสอน คำแนะนำ และการสนับสนุนด้วยดีมาโดยตลอด</p>
+                    
+                    <p style="text-indent: 30px; margin-top: 10px;">ข้าพเจ้าหวังเป็นอย่างยิ่งว่าแฟ้มสะสมผลงานเล่มนี้ จะช่วยให้คณะกรรมการได้เห็นถึงความตั้งใจจริงของข้าพเจ้า หากมีข้อผิดพลาดประการใด ข้าพเจ้าขออภัยมา ณ ที่นี้</p>
+                    
+                    <p style="text-align: right; margin-top: 20px; font-weight: bold; color: #d81b60;">
+                        (อรณิฎาศ์ จันทร์เทวาลิขิต)<br>
+                        ผู้จัดทำ
+                    </p>
+                </div>
+            </div>
+
+            <!-- หน้า 3: ประวัติส่วนตัว -->
+            <div id="profile" class="tab-content">
+                <h2 style="color: #c2185b; margin-bottom: 15px;">🎀 ประวัติส่วนตัว</h2>
+                
+                <div class="info-box">
+                    <h3>👤 ข้อมูลทั่วไป</h3>
+                    <p><strong>ชื่อ-นามสกุล:</strong> นางสาวอรณิฎาศ์ จันทร์เทวาลิขิต</p>
+                    <p><strong>ชื่อเล่น:</strong> ซีน</p>
+                    <p><strong>อายุ:</strong> 17 ปี</p>
+                    <p><strong>วัน/เดือน/ปีเกิด:</strong> 30 กรกฎาคม พ.ศ.2552</p>
+                    <p><strong>หมู่เลือด:</strong> B</p>
+                    <p><strong>เชื้อชาติ:</strong> ไทย | <strong>สัญชาติ:</strong> ไทย | <strong>ศาสนา:</strong> พุทธ</p>
+                    <p><strong>งานอดิเรก:</strong> ดูหนัง, ฟังเพลง, เล่นเกม และหาความรู้ใหม่ๆ อยู่เสมอ</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🎓 ประวัติการศึกษา</h3>
+                    <p><strong>ระดับประถมศึกษา:</strong> โรงเรียนอนุบาลบ้านบึง (อำนาจคณูปถัมภ์)</p>
+                    <p><strong>ระดับมัธยมศึกษาตอนต้น:</strong> โรงเรียนบ้านบึง “อุตสาหกรรมนุเคราะห์”</p>
+                    <p><strong>ระดับมัธยมศึกษาตอนปลาย:</strong> โรงเรียนบ้านบึง “อุตสาหกรรมนุเคราะห์”</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h3>💖 จุดแข็ง</h3>
+                    <p>มีทักษะการแก้ไขปัญหาเฉพาะหน้าได้ดี เรียนรู้เร็ว และสามารถทำงานร่วมกับผู้อื่นได้อย่างมีประสิทธิภาพ</p>
+                </div>
+
+                <div class="weakness-box">
+                    <h3>💡 จุดอ่อน & แนวทางพัฒนาตนเอง</h3>
+                    <p>ใส่ใจรายละเอียดมากจนอาจทำให้งานล่าช้า และรู้สึกตื่นเต้นเมื่อต้องพูดต่อหน้าคนจำนวนมาก (กำลังพัฒนาโดยการวางแผนจัดสรรเวลาให้ดียิ่งขึ้น และฝึกฝนการพูดสื่อสารต่อหน้าชุมชนบ่อยๆ เพื่อสร้างความมั่นใจ)</p>
+                </div>
+            </div>
+
+            <!-- หน้า 4: ความสนใจในการศึกษาต่อ -->
+            <div id="education" class="tab-content">
+                <h2 style="color: #c2185b; margin-bottom: 15px;">💊 ความสนใจในการศึกษาต่อ</h2>
+                
+                <div class="edu-card">
+                    <img src="sillapakorn.jpg" alt="ตรามหาวิทยาลัยศิลปากร" class="uni-logo">
+                    <div class="edu-details">
+                        <h4>🧪 คณะเภสัชศาสตร์ มหาวิทยาลัยศิลปากร</h4>
+                        <p>หลักสูตรเภสัชศาสตรบัณฑิต</p>
+                        <p class="sub-text">(ภาษาไทย ปกติ)</p>
+                    </div>
+                </div>
+                
+                <div class="edu-card">
+                    <img src="Tu.jpg" alt="ตรามหาวิทยาลัยธรรมศาสตร์" class="uni-logo">
+                    <div class="edu-details">
+                        <h4>🩺 คณะพยาบาลศาสตร์ มหาวิทยาลัยธรรมศาสตร์</h4>
+                        <p>พยาบาลศาสตรบัณฑิต</p>
+                        <p class="sub-text">(ภาษาไทย ปกติ)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- หน้า 5: กิจกรรม -->
+            <div id="activities" class="tab-content">
+                <h2 style="color: #c2185b; margin-bottom: 15px;">✨ กิจกรรมที่เข้าร่วม</h2>
+                
+                <div class="activity-card">
+                    <div class="activity-img-wrapper">
+                        <img src="S27320376.jpg" alt="เกียรติบัตรการฝึกปฏิบัติงาน" class="activity-img">
+                    </div>
+                    <h3>🏥 การฝึกปฏิบัติงาน ณ โรงพยาบาลบ้านบึง</h3>
+                    <p>
+                        ได้เข้าร่วมรับการฝึกปฏิบัติงานจริง ณ กลุ่มงานการพยาบาล โรงพยาบาลบ้านบึง (โรงพยาบาลของรัฐบาล) ระหว่างวันที่ 1, 5-8 พฤษภาคม พ.ศ. 2569 เพื่อเรียนรู้ทักษะการทำงานในสายงานด้านการแพทย์ การพยาบาล และระบบการดูแลผู้ป่วยอย่างเป็นมืออาชีพ
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-img-wrapper">
+                        <img src="126746.jpg" alt="ตัวแทน อย.น้อย ขึ้นบรรยาย" class="activity-img">
+                    </div>
+                    <h3>🎤 ตัวแทน อย.น้อย ขึ้นบรรยายให้ความรู้</h3>
+                    <p>
+                        เป็นตัวแทนแกนนำ อย.น้อย ขึ้นบรรยายให้ความรู้เรื่องการเลือกซื้อและการเลือกใช้เครื่องสำอางอย่างถูกต้องและปลอดภัย ณ โรงเรียนบ้านบึง "อ
