@@ -126,7 +126,7 @@
         .p9  { width: 10px; height: 13px; left: 25%;  animation-duration: 14s; animation-delay: 6s; }
         .p10 { width: 13px; height: 17px; left: 75%;  animation-duration: 10s; animation-delay: 7s; }
 
-        /* Navbar ด้านบน (ปรับแก้ไขแก้ปัญหามือถือเรียบร้อย) */
+        /* Navbar ด้านบน (ปรับปรุงปุ่มให้กดติดชัวร์บนมือถือ) */
         .navbar {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
@@ -148,7 +148,7 @@
 
         .navbar ul {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             list-style: none;
             gap: 10px;
             padding: 0 10px;
@@ -156,26 +156,27 @@
             margin: 0 auto;
         }
 
-        .navbar a {
+        .nav-btn {
             color: #8b4567;
             font-weight: 600;
-            text-decoration: none;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 14px;
             transition: all 0.3s ease;
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(255, 192, 203, 0.6);
-            display: inline-block;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 192, 203, 0.8);
+            outline: none;
             white-space: nowrap;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .navbar a:hover, .navbar a.active {
+        .nav-btn:hover, .nav-btn.active {
             background: linear-gradient(135deg, #ffb6c1, #ff8da1);
             color: #ffffff;
             box-shadow: 0 4px 15px rgba(255, 141, 161, 0.5);
             transform: translateY(-2px);
+            border-color: transparent;
         }
 
         /* Container หลัก */
@@ -227,11 +228,11 @@
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.4s ease-in-out;
         }
 
         .tab-content.active {
             display: block;
+            animation: fadeIn 0.4s ease-in-out;
         }
 
         @keyframes fadeIn {
@@ -512,12 +513,12 @@
 
     <nav class="navbar">
         <ul>
-            <li><a class="nav-link active" onclick="switchTab('home', event)">🌸 หน้าแรก</a></li>
-            <li><a class="nav-link" onclick="switchTab('intro', event)">📖 คำนำ</a></li>
-            <li><a class="nav-link" onclick="switchTab('profile', event)">🎀 ประวัติส่วนตัว</a></li>
-            <li><a class="nav-link" onclick="switchTab('education', event)">💊 ความสนใจในการศึกษาต่อ</a></li>
-            <li><a class="nav-link" onclick="switchTab('activities', event)">✨ กิจกรรม</a></li>
-            <li><a class="nav-link" onclick="switchTab('skills', event)">💖 ความสามารถพิเศษ</a></li>
+            <li><button class="nav-btn active" onclick="switchTab('home', this)">🌸 หน้าแรก</button></li>
+            <li><button class="nav-btn" onclick="switchTab('intro', this)">📖 คำนำ</button></li>
+            <li><button class="nav-btn" onclick="switchTab('profile', this)">🎀 ประวัติส่วนตัว</button></li>
+            <li><button class="nav-btn" onclick="switchTab('education', this)">💊 ความสนใจในการศึกษาต่อ</button></li>
+            <li><button class="nav-btn" onclick="switchTab('activities', this)">✨ กิจกรรม</button></li>
+            <li><button class="nav-btn" onclick="switchTab('skills', this)">💖 ความสามารถพิเศษ</button></li>
         </ul>
     </nav>
 
@@ -596,5 +597,4 @@
             <div id="education" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">💊 ความสนใจในการศึกษาต่อ</h2>
                 
-                <div class="edu-card">
-                    <img src="sillapakorn.jpg" alt="ตรามหาวิทยาลัยศิลปากร" class="uni-lo
+                <div class
