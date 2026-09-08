@@ -20,6 +20,11 @@
             overflow-x: hidden;
         }
 
+        /* --- ซ่อน Radio Control --- */
+        input[type="radio"] {
+            display: none;
+        }
+
         /* --- พื้นหลังเงาเรืองแสง --- */
         .bg-glow-container {
             position: fixed;
@@ -122,7 +127,7 @@
         .p9  { width: 10px; height: 13px; left: 25%;  animation-duration: 14s; animation-delay: 6s; }
         .p10 { width: 13px; height: 17px; left: 75%;  animation-duration: 10s; animation-delay: 7s; }
 
-        /* Navbar ด้านบน (สไลด์ข้างได้ ลื่นๆ) */
+        /* Navbar แถบเมนูด้านบน */
         .navbar {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(12px);
@@ -142,17 +147,17 @@
             display: none;
         }
 
-        .navbar ul {
+        .nav-container {
             display: flex;
             justify-content: flex-start;
-            list-style: none;
             gap: 10px;
             padding: 0 10px;
             width: max-content;
             margin: 0 auto;
         }
 
-        .nav-btn {
+        .nav-label {
+            display: inline-block;
             color: #8b4567;
             font-weight: 600;
             padding: 8px 16px;
@@ -162,17 +167,28 @@
             cursor: pointer;
             background: rgba(255, 255, 255, 0.9);
             border: 1px solid rgba(255, 192, 203, 0.8);
-            outline: none;
             white-space: nowrap;
+            user-select: none;
             -webkit-tap-highlight-color: transparent;
         }
 
-        .nav-btn:hover, .nav-btn.active {
+        .nav-label:hover {
+            transform: translateY(-2px);
+            background: #fff;
+        }
+
+        /* สถานะปุ่มเมนูเมื่อถูกเลือก */
+        #tab1:checked ~ .navbar label[for="tab1"],
+        #tab2:checked ~ .navbar label[for="tab2"],
+        #tab3:checked ~ .navbar label[for="tab3"],
+        #tab4:checked ~ .navbar label[for="tab4"],
+        #tab5:checked ~ .navbar label[for="tab5"],
+        #tab6:checked ~ .navbar label[for="tab6"] {
             background: linear-gradient(135deg, #ffb6c1, #ff8da1);
             color: #ffffff;
             box-shadow: 0 4px 15px rgba(255, 141, 161, 0.5);
-            transform: translateY(-2px);
             border-color: transparent;
+            transform: translateY(-2px);
         }
 
         /* Container หลัก */
@@ -198,12 +214,19 @@
             overflow: hidden;
         }
 
+        /* ซ่อนเนื้อหาทั้งหมดเป็นค่าเริ่มต้น */
         .tab-content {
-            display: none !important;
+            display: none;
         }
 
-        .tab-content.active {
-            display: block !important;
+        /* แสดงเนื้อหาตาม Radio ที่เลือก */
+        #tab1:checked ~ .container #content1,
+        #tab2:checked ~ .container #content2,
+        #tab3:checked ~ .container #content3,
+        #tab4:checked ~ .container #content4,
+        #tab5:checked ~ .container #content5,
+        #tab6:checked ~ .container #content6 {
+            display: block;
             animation: fadeIn 0.35s ease-in-out;
         }
 
@@ -284,7 +307,7 @@
             font-weight: 600;
         }
 
-        /* ไฮไลต์ข้อดี/จุดเด่น และ จุดอ่อน */
+        /* ไฮไลต์จุดแข็ง & จุดอ่อน */
         .highlight-box {
             background: linear-gradient(135deg, #fff5f8, #ffe3ec);
             border-left: 5px solid #ff4081;
@@ -406,6 +429,14 @@
 </head>
 <body>
 
+    <!-- ระบบ Radio บังคับสลับหน้าโดยไม่ใช้ JS -->
+    <input type="radio" id="tab1" name="tab-group" checked>
+    <input type="radio" id="tab2" name="tab-group">
+    <input type="radio" id="tab3" name="tab-group">
+    <input type="radio" id="tab4" name="tab-group">
+    <input type="radio" id="tab5" name="tab-group">
+    <input type="radio" id="tab6" name="tab-group">
+
     <div class="bg-glow-container">
         <div class="glow-blob blob-1"></div>
         <div class="glow-blob blob-2"></div>
@@ -426,21 +457,21 @@
     </div>
 
     <nav class="navbar">
-        <ul>
-            <li><button type="button" class="nav-btn active" onclick="switchTab('home', this)">🌸 หน้าแรก</button></li>
-            <li><button type="button" class="nav-btn" onclick="switchTab('intro', this)">📖 คำนำ</button></li>
-            <li><button type="button" class="nav-btn" onclick="switchTab('profile', this)">🎀 ประวัติส่วนตัว</button></li>
-            <li><button type="button" class="nav-btn" onclick="switchTab('education', this)">💊 ความสนใจในการศึกษาต่อ</button></li>
-            <li><button type="button" class="nav-btn" onclick="switchTab('activities', this)">✨ กิจกรรม</button></li>
-            <li><button type="button" class="nav-btn" onclick="switchTab('skills', this)">💖 ความสามารถพิเศษ</button></li>
-        </ul>
+        <div class="nav-container">
+            <label for="tab1" class="nav-label">🌸 หน้าแรก</label>
+            <label for="tab2" class="nav-label">📖 คำนำ</label>
+            <label for="tab3" class="nav-label">🎀 ประวัติส่วนตัว</label>
+            <label for="tab4" class="nav-label">💊 ความสนใจในการศึกษาต่อ</label>
+            <label for="tab5" class="nav-label">✨ กิจกรรม</label>
+            <label for="tab6" class="nav-label">💖 ความสามารถพิเศษ</label>
+        </div>
     </nav>
 
     <div class="container">
         <div class="card">
 
             <!-- หน้า 1: หน้าแรก -->
-            <div id="home" class="tab-content active">
+            <div id="content1" class="tab-content">
                 <div class="profile-img-wrapper">
                     <img src="S27320348.jpg" alt="รูปโปรไฟล์ อรณิฎาศ์" class="profile-img">
                 </div>
@@ -462,7 +493,7 @@
             </div>
 
             <!-- หน้า 2: คำนำ -->
-            <div id="intro" class="tab-content">
+            <div id="content2" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">📖 คำนำ</h2>
                 <div class="info-box">
                     <p style="text-indent: 30px;">แฟ้มสะสมผลงาน (Portfolio) ฉบับนี้ จัดทำขึ้นเพื่อรวบรวมประวัติการศึกษา ความรู้ ทักษะ ผลงาน และกิจกรรมต่าง ๆ ของข้าพเจ้า เพื่อใช้เป็นเอกสารประกอบการพิจารณาเข้าศึกษาต่อในระดับอุดมศึกษา</p>
@@ -479,7 +510,7 @@
             </div>
 
             <!-- หน้า 3: ประวัติส่วนตัว -->
-            <div id="profile" class="tab-content">
+            <div id="content3" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">🎀 ประวัติส่วนตัว</h2>
                 
                 <div class="info-box">
@@ -512,7 +543,7 @@
             </div>
 
             <!-- หน้า 4: ความสนใจในการศึกษาต่อ -->
-            <div id="education" class="tab-content">
+            <div id="content4" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">💊 ความสนใจในการศึกษาต่อ</h2>
                 
                 <div class="edu-card">
@@ -535,23 +566,9 @@
             </div>
 
             <!-- หน้า 5: กิจกรรม -->
-            <div id="activities" class="tab-content">
+            <div id="content5" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">✨ กิจกรรมที่เข้าร่วม</h2>
                 
                 <div class="activity-card">
                     <div class="activity-img-wrapper">
-                        <img src="S27320376.jpg" alt="เกียรติบัตรการฝึกปฏิบัติงาน" class="activity-img">
-                    </div>
-                    <h3>🏥 การฝึกปฏิบัติงาน ณ โรงพยาบาลบ้านบึง</h3>
-                    <p>
-                        ได้เข้าร่วมรับการฝึกปฏิบัติงานจริง ณ กลุ่มงานการพยาบาล โรงพยาบาลบ้านบึง (โรงพยาบาลของรัฐบาล) ระหว่างวันที่ 1, 5-8 พฤษภาคม พ.ศ. 2569 เพื่อเรียนรู้ทักษะการทำงานในสายงานด้านการแพทย์ การพยาบาล และระบบการดูแลผู้ป่วยอย่างเป็นมืออาชีพ
-                    </p>
-                </div>
-
-                <div class="activity-card">
-                    <div class="activity-img-wrapper">
-                        <img src="126746.jpg" alt="ตัวแทน อย.น้อย ขึ้นบรรยาย" class="activity-img">
-                    </div>
-                    <h3>🎤 ตัวแทน อย.น้อย ขึ้นบรรยายให้ความรู้</h3>
-                    <p>
-                        เป็นตัวแทนแกนนำ อย.น้อย ขึ้นบรรยายให้ความรู้เรื่องการเลือกซื้อและการเลือกใช้เครื่องสำอางอย่างถูกต้องและปลอดภัย ณ โรงเรียนบ้านบึง "อ
+                        <img src="S27320376.jpg" alt="เกียรติบัตรการฝึ
