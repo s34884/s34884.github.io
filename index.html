@@ -20,11 +20,6 @@
             overflow-x: hidden;
         }
 
-        /* --- ซ่อน Radio Control --- */
-        input[type="radio"] {
-            display: none;
-        }
-
         /* --- พื้นหลังเงาเรืองแสง --- */
         .bg-glow-container {
             position: fixed;
@@ -102,18 +97,10 @@
         }
 
         @keyframes fallSakura {
-            0% {
-                top: -10%;
-                transform: translateX(0) rotate(0deg) scale(0.8);
-                opacity: 0;
-            }
+            0% { top: -10%; transform: translateX(0) rotate(0deg) scale(0.8); opacity: 0; }
             10% { opacity: 0.45; }
             90% { opacity: 0.45; }
-            100% {
-                top: 105%;
-                transform: translateX(120px) rotate(450deg) scale(1.1);
-                opacity: 0;
-            }
+            100% { top: 105%; transform: translateX(120px) rotate(450deg) scale(1.1); opacity: 0; }
         }
 
         .p1  { width: 12px; height: 16px; left: 5%;   animation-duration: 9s;  animation-delay: 0s; }
@@ -143,9 +130,7 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        .navbar::-webkit-scrollbar {
-            display: none;
-        }
+        .navbar::-webkit-scrollbar { display: none; }
 
         .nav-container {
             display: flex;
@@ -156,7 +141,7 @@
             margin: 0 auto;
         }
 
-        .nav-label {
+        .nav-btn {
             display: inline-block;
             color: #8b4567;
             font-weight: 600;
@@ -170,35 +155,23 @@
             white-space: nowrap;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
+            outline: none;
         }
 
-        .nav-label:hover {
-            transform: translateY(-2px);
-            background: #fff;
-        }
-
-        /* สถานะปุ่มเมนูเมื่อถูกเลือก */
-        #tab1:checked ~ .navbar label[for="tab1"],
-        #tab2:checked ~ .navbar label[for="tab2"],
-        #tab3:checked ~ .navbar label[for="tab3"],
-        #tab4:checked ~ .navbar label[for="tab4"],
-        #tab5:checked ~ .navbar label[for="tab5"],
-        #tab6:checked ~ .navbar label[for="tab6"] {
-            background: linear-gradient(135deg, #ffb6c1, #ff8da1);
-            color: #ffffff;
+        .nav-btn.active {
+            background: linear-gradient(135deg, #ffb6c1, #ff8da1) !important;
+            color: #ffffff !important;
             box-shadow: 0 4px 15px rgba(255, 141, 161, 0.5);
-            border-color: transparent;
-            transform: translateY(-2px);
+            border-color: transparent !important;
         }
 
-        /* Container หลัก */
+        /* Container & Card */
         .container {
             max-width: 800px;
             margin: 25px auto;
             padding: 0 15px;
         }
 
-        /* การ์ดหลัก */
         .card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
@@ -210,23 +183,15 @@
             border: 2px solid rgba(255, 255, 255, 0.95);
             margin-bottom: 25px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            min-height: 300px;
         }
 
-        /* ซ่อนเนื้อหาทั้งหมดเป็นค่าเริ่มต้น */
         .tab-content {
             display: none;
         }
 
-        /* แสดงเนื้อหาตาม Radio ที่เลือก */
-        #tab1:checked ~ .container #content1,
-        #tab2:checked ~ .container #content2,
-        #tab3:checked ~ .container #content3,
-        #tab4:checked ~ .container #content4,
-        #tab5:checked ~ .container #content5,
-        #tab6:checked ~ .container #content6 {
-            display: block;
+        .tab-content.show {
+            display: block !important;
             animation: fadeIn 0.35s ease-in-out;
         }
 
@@ -235,7 +200,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* รูปโปรไฟล์ */
+        /* Elements Inside Cards */
         .profile-img-wrapper {
             position: relative;
             display: inline-block;
@@ -251,7 +216,6 @@
             box-shadow: 0 8px 25px rgba(255, 105, 180, 0.35);
         }
 
-        /* บล็อกเนื้อหา */
         .info-box {
             background: linear-gradient(135deg, rgba(255, 240, 245, 0.95), rgba(255, 228, 233, 0.95));
             border-radius: 16px;
@@ -262,20 +226,9 @@
             box-shadow: 0 4px 12px rgba(255, 182, 193, 0.15);
         }
 
-        .info-box h3 {
-            color: #d81b60;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
+        .info-box h3 { color: #d81b60; margin-bottom: 10px; font-size: 18px; }
+        .info-box p { margin: 8px 0; color: #6b3e52; font-size: 15px; line-height: 1.8; }
 
-        .info-box p {
-            margin: 8px 0;
-            color: #6b3e52;
-            font-size: 15px;
-            line-height: 1.8;
-        }
-
-        /* ช่องทางการติดต่อ */
         .contact-box {
             background: #ffffff;
             border-radius: 16px;
@@ -286,28 +239,11 @@
             box-shadow: 0 4px 15px rgba(255, 192, 203, 0.2);
         }
 
-        .contact-box h3 {
-            color: #c2185b;
-            margin-bottom: 12px;
-            font-size: 18px;
-        }
+        .contact-box h3 { color: #c2185b; margin-bottom: 12px; font-size: 18px; }
+        .contact-list { list-style: none; }
+        .contact-list li { margin: 10px 0; font-size: 15px; }
+        .contact-list a { color: #e91e63; text-decoration: none; font-weight: 600; }
 
-        .contact-list {
-            list-style: none;
-        }
-
-        .contact-list li {
-            margin: 10px 0;
-            font-size: 15px;
-        }
-
-        .contact-list a {
-            color: #e91e63;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* ไฮไลต์จุดแข็ง & จุดอ่อน */
         .highlight-box {
             background: linear-gradient(135deg, #fff5f8, #ffe3ec);
             border-left: 5px solid #ff4081;
@@ -329,7 +265,6 @@
         .highlight-box h3 { color: #c2185b; margin-bottom: 6px; }
         .weakness-box h3 { color: #c62828; margin-bottom: 6px; }
 
-        /* การศึกษา */
         .edu-card {
             background: #ffffff;
             border-radius: 16px;
@@ -350,23 +285,10 @@
             flex-shrink: 0;
         }
 
-        .edu-details h4 {
-            color: #ad1457;
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
+        .edu-details h4 { color: #ad1457; font-size: 16px; margin-bottom: 4px; }
+        .edu-details p { color: #6b3e52; font-size: 14px; }
+        .sub-text { font-size: 13px !important; color: #8b5b6e !important; }
 
-        .edu-details p {
-            color: #6b3e52;
-            font-size: 14px;
-        }
-
-        .sub-text {
-            font-size: 13px !important;
-            color: #8b5b6e !important;
-        }
-
-        /* กิจกรรม */
         .activity-card {
             background: #ffffff;
             border-radius: 20px;
@@ -386,56 +308,15 @@
             border: 3px solid #fff0f5;
         }
 
-        .activity-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .activity-img { width: 100%; height: auto; display: block; }
+        .activity-card h3 { color: #c2185b; font-size: 17px; margin-bottom: 8px; }
+        .activity-card p { color: #6b3e52; font-size: 14px; line-height: 1.6; text-align: left; background: #fff0f5; padding: 12px; border-radius: 10px; }
 
-        .activity-card h3 {
-            color: #c2185b;
-            font-size: 17px;
-            margin-bottom: 8px;
-        }
-
-        .activity-card p {
-            color: #6b3e52;
-            font-size: 14px;
-            line-height: 1.6;
-            text-align: left;
-            background: #fff0f5;
-            padding: 12px;
-            border-radius: 10px;
-        }
-
-        /* ความสามารถ */
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 10px;
-        }
-
-        .skill-item {
-            background: #ffffff;
-            border: 1px solid #ffb6c1;
-            color: #d81b60;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
+        .skill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .skill-item { background: #ffffff; border: 1px solid #ffb6c1; color: #d81b60; padding: 6px 14px; border-radius: 20px; font-size: 14px; font-weight: 500; }
     </style>
 </head>
 <body>
-
-    <!-- ระบบ Radio บังคับสลับหน้าโดยไม่ใช้ JS -->
-    <input type="radio" id="tab1" name="tab-group" checked>
-    <input type="radio" id="tab2" name="tab-group">
-    <input type="radio" id="tab3" name="tab-group">
-    <input type="radio" id="tab4" name="tab-group">
-    <input type="radio" id="tab5" name="tab-group">
-    <input type="radio" id="tab6" name="tab-group">
 
     <div class="bg-glow-container">
         <div class="glow-blob blob-1"></div>
@@ -458,12 +339,12 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <label for="tab1" class="nav-label">🌸 หน้าแรก</label>
-            <label for="tab2" class="nav-label">📖 คำนำ</label>
-            <label for="tab3" class="nav-label">🎀 ประวัติส่วนตัว</label>
-            <label for="tab4" class="nav-label">💊 ความสนใจในการศึกษาต่อ</label>
-            <label for="tab5" class="nav-label">✨ กิจกรรม</label>
-            <label for="tab6" class="nav-label">💖 ความสามารถพิเศษ</label>
+            <button class="nav-btn active" onclick="switchTab(event, 'tab1')">🌸 หน้าแรก</button>
+            <button class="nav-btn" onclick="switchTab(event, 'tab2')">📖 คำนำ</button>
+            <button class="nav-btn" onclick="switchTab(event, 'tab3')">🎀 ประวัติส่วนตัว</button>
+            <button class="nav-btn" onclick="switchTab(event, 'tab4')">💊 ความสนใจในการศึกษาต่อ</button>
+            <button class="nav-btn" onclick="switchTab(event, 'tab5')">✨ กิจกรรม</button>
+            <button class="nav-btn" onclick="switchTab(event, 'tab6')">💖 ความสามารถพิเศษ</button>
         </div>
     </nav>
 
@@ -471,17 +352,15 @@
         <div class="card">
 
             <!-- หน้า 1: หน้าแรก -->
-            <div id="content1" class="tab-content">
+            <div id="tab1" class="tab-content show">
                 <div class="profile-img-wrapper">
                     <img src="S27320348.jpg" alt="รูปโปรไฟล์ อรณิฎาศ์" class="profile-img">
                 </div>
-                
                 <div class="info-box">
                     <h3>🌸 แนะนำตัว</h3>
                     <p><strong>ชื่อ-นามสกุล:</strong> นางสาวอรณิฎาศ์ จันทร์เทวาลิขิต (ซีน)</p>
                     <p><strong>แผนการเรียน:</strong> Gifted (ห้องเรียนพิเศษวิทยาศาสตร์-คณิตศาสตร์)</p>
                 </div>
-
                 <div class="contact-box">
                     <h3>💌 ช่องทางการติดต่อ</h3>
                     <ul class="contact-list">
@@ -493,26 +372,21 @@
             </div>
 
             <!-- หน้า 2: คำนำ -->
-            <div id="content2" class="tab-content">
+            <div id="tab2" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">📖 คำนำ</h2>
                 <div class="info-box">
                     <p style="text-indent: 30px;">แฟ้มสะสมผลงาน (Portfolio) ฉบับนี้ จัดทำขึ้นเพื่อรวบรวมประวัติการศึกษา ความรู้ ทักษะ ผลงาน และกิจกรรมต่าง ๆ ของข้าพเจ้า เพื่อใช้เป็นเอกสารประกอบการพิจารณาเข้าศึกษาต่อในระดับอุดมศึกษา</p>
-                    
                     <p style="text-indent: 30px; margin-top: 10px;">การจัดทำเอกสารฉบับนี้มีเป้าหมายเพื่อสะท้อนถึงความพร้อม ความมุ่งมั่น และศักยภาพของข้าพเจ้าในสาขาวิชานี้อย่างเป็นระบบ ข้าพเจ้าขอขอบพระคุณคณะครูโรงเรียนบ้านบึง “อุตสาหกรรมนุเคราะห์” ครอบครัว และเพื่อน ๆ ที่ให้การอบรมสั่งสอน คำแนะนำ และการสนับสนุนด้วยดีมาโดยตลอด</p>
-                    
                     <p style="text-indent: 30px; margin-top: 10px;">ข้าพเจ้าหวังเป็นอย่างยิ่งว่าแฟ้มสะสมผลงานเล่มนี้ จะช่วยให้คณะกรรมการได้เห็นถึงความตั้งใจจริงของข้าพเจ้า หากมีข้อผิดพลาดประการใด ข้าพเจ้าขออภัยมา ณ ที่นี้</p>
-                    
                     <p style="text-align: right; margin-top: 20px; font-weight: bold; color: #d81b60;">
-                        (อรณิฎาศ์ จันทร์เทวาลิขิต)<br>
-                        ผู้จัดทำ
+                        (อรณิฎาศ์ จันทร์เทวาลิขิต)<br>ผู้จัดทำ
                     </p>
                 </div>
             </div>
 
             <!-- หน้า 3: ประวัติส่วนตัว -->
-            <div id="content3" class="tab-content">
+            <div id="tab3" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">🎀 ประวัติส่วนตัว</h2>
-                
                 <div class="info-box">
                     <h3>👤 ข้อมูลทั่วไป</h3>
                     <p><strong>ชื่อ-นามสกุล:</strong> นางสาวอรณิฎาศ์ จันทร์เทวาลิขิต</p>
@@ -523,19 +397,16 @@
                     <p><strong>เชื้อชาติ:</strong> ไทย | <strong>สัญชาติ:</strong> ไทย | <strong>ศาสนา:</strong> พุทธ</p>
                     <p><strong>งานอดิเรก:</strong> ดูหนัง, ฟังเพลง, เล่นเกม และหาความรู้ใหม่ๆ อยู่เสมอ</p>
                 </div>
-
                 <div class="info-box">
                     <h3>🎓 ประวัติการศึกษา</h3>
                     <p><strong>ระดับประถมศึกษา:</strong> โรงเรียนอนุบาลบ้านบึง (อำนาจคณูปถัมภ์)</p>
                     <p><strong>ระดับมัธยมศึกษาตอนต้น:</strong> โรงเรียนบ้านบึง “อุตสาหกรรมนุเคราะห์”</p>
                     <p><strong>ระดับมัธยมศึกษาตอนปลาย:</strong> โรงเรียนบ้านบึง “อุตสาหกรรมนุเคราะห์”</p>
                 </div>
-
                 <div class="highlight-box">
                     <h3>💖 จุดแข็ง</h3>
                     <p>มีทักษะการแก้ไขปัญหาเฉพาะหน้าได้ดี เรียนรู้เร็ว และสามารถทำงานร่วมกับผู้อื่นได้อย่างมีประสิทธิภาพ</p>
                 </div>
-
                 <div class="weakness-box">
                     <h3>💡 จุดอ่อน & แนวทางพัฒนาตนเอง</h3>
                     <p>ใส่ใจรายละเอียดมากจนอาจทำให้งานล่าช้า และรู้สึกตื่นเต้นเมื่อต้องพูดต่อหน้าคนจำนวนมาก (กำลังพัฒนาโดยการวางแผนจัดสรรเวลาให้ดียิ่งขึ้น และฝึกฝนการพูดสื่อสารต่อหน้าชุมชนบ่อยๆ เพื่อสร้างความมั่นใจ)</p>
@@ -543,9 +414,8 @@
             </div>
 
             <!-- หน้า 4: ความสนใจในการศึกษาต่อ -->
-            <div id="content4" class="tab-content">
+            <div id="tab4" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">💊 ความสนใจในการศึกษาต่อ</h2>
-                
                 <div class="edu-card">
                     <img src="sillapakorn.jpg" alt="ตรามหาวิทยาลัยศิลปากร" class="uni-logo">
                     <div class="edu-details">
@@ -554,7 +424,6 @@
                         <p class="sub-text">(ภาษาไทย ปกติ)</p>
                     </div>
                 </div>
-                
                 <div class="edu-card">
                     <img src="Tu.jpg" alt="ตรามหาวิทยาลัยธรรมศาสตร์" class="uni-logo">
                     <div class="edu-details">
@@ -566,12 +435,11 @@
             </div>
 
             <!-- หน้า 5: กิจกรรม -->
-            <div id="content5" class="tab-content">
+            <div id="tab5" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">✨ กิจกรรมที่เข้าร่วม</h2>
-                
                 <div class="activity-card">
                     <div class="activity-img-wrapper">
-                        <img src="S27320376.jpg" alt="เกียรติบัตรการฝึกอบปฏิบัติงาน ณ โรงพยาบาลบ้านบึง" class="activity-img">
+                        <img src="S27320376.jpg" alt="เกียรติบัตรการฝึกปฏิบัติงาน" class="activity-img">
                     </div>
                     <h3>🏥 การฝึกปฏิบัติงาน ณ โรงพยาบาลบ้านบึง</h3>
                     <p>ได้เข้าร่วมรับการฝึกปฏิบัติงานจริง ณ กลุ่มงานการพยาบาล โรงพยาบาลบ้านบึง ระหว่างวันที่ 1, 5-8 พฤษภาคม พ.ศ. 2569 เพื่อเรียนรู้ทักษะการทำงานในสายงานด้านการแพทย์ การพยาบาล และระบบการดูแลผู้ป่วยอย่างเป็นมืออาชีพ</p>
@@ -587,9 +455,25 @@
             </div>
 
             <!-- หน้า 6: ความสามารถพิเศษ -->
-            <div id="content6" class="tab-content">
+            <div id="tab6" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">💖 ความสามารถพิเศษ / ทักษะ</h2>
                 
+                <div class="activity-card" style="margin-top: 0; margin-bottom: 20px;">
+                    <div class="activity-img-wrapper">
+                        <img src="1788832675807.jpg" alt="ภาพแสดงความสามารถพิเศษด้านการร้องเพลงและการขับร้อง" class="activity-img">
+                    </div>
+                    <h3>🎤 ความสามารถพิเศษด้านการร้องเพลง & สื่อสาร</h3>
+                    <p>มีความสามารถและชื่นชอบด้านการร้องเพลง การใช้เสียง และการพูดนำเสนอ/บรรยายต่อหน้าชุมชน ช่วยส่งเสริมทักษะความมั่นใจและการสื่อสารต่อหน้าสาธารณชนได้อย่างดีเยี่ยม</p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🎭 ด้านศิลปะและการแสดงออก</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">🎤 การร้องเพลง / ขับร้อง</div>
+                        <div class="skill-item">🗣️ การพูดนำเสนอ & บรรยาย</div>
+                    </div>
+                </div>
+
                 <div class="info-box">
                     <h3>🏥 ประวัติและประสบการณ์</h3>
                     <div class="skill-list">
@@ -611,5 +495,29 @@
         </div>
     </div>
 
+    <script>
+        function switchTab(evt, tabId) {
+            if (evt) evt.preventDefault();
+            
+            var contents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("show");
+            }
+
+            var buttons = document.getElementsByClassName("nav-btn");
+            for (var j = 0; j < buttons.length; j++) {
+                buttons[j].classList.remove("active");
+            }
+
+            var targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add("show");
+            }
+
+            if (evt && evt.currentTarget) {
+                evt.currentTarget.classList.add("active");
+            }
+        }
+    </script>
 </body>
 </html>
