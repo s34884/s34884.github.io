@@ -454,31 +454,16 @@
                 </div>
             </div>
 
-            <!-- หน้า 6: ความสามารถพิเศษ -->
-            <div id="tab6" class="tab-content">
+                        <!-- หน้า 6: ความสามารถพิเศษ -->
+            <div id="content6" class="tab-content">
                 <h2 style="color: #c2185b; margin-bottom: 15px;">💖 ความสามารถพิเศษ / ทักษะ</h2>
                 
                 <div class="activity-card" style="margin-top: 0; margin-bottom: 20px;">
                     <div class="activity-img-wrapper">
-                        <img src="1788832675807.jpg" alt="ภาพแสดงความสามารถพิเศษด้านการร้องเพลงและการขับร้อง" class="activity-img">
+                        <img src="1788832675807.jpg" alt="ภาพแสดงความสามารถพิเศษด้านการร้องเพลง" class="activity-img">
                     </div>
                     <h3>🎤 ความสามารถพิเศษด้านการร้องเพลง & สื่อสาร</h3>
                     <p>มีความสามารถและชื่นชอบด้านการร้องเพลง การใช้เสียง และการพูดนำเสนอ/บรรยายต่อหน้าชุมชน ช่วยส่งเสริมทักษะความมั่นใจและการสื่อสารต่อหน้าสาธารณชนได้อย่างดีเยี่ยม</p>
-                </div>
-
-                <div class="info-box">
-                    <h3>🎭 ด้านศิลปะและการแสดงออก</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">🎤 การร้องเพลง / ขับร้อง</div>
-                        <div class="skill-item">🗣️ การพูดนำเสนอ & บรรยาย</div>
-                    </div>
-                </div>
-
-                <div class="info-box">
-                    <h3>🏥 ประวัติและประสบการณ์</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">🏥 ฝึกงานโรงพยาบาล & Workshop</div>
-                    </div>
                 </div>
 
                 <div class="info-box">
@@ -491,33 +476,4 @@
                     </div>
                 </div>
             </div>
-
-        </div>
-    </div>
-
-    <script>
-        function switchTab(evt, tabId) {
-            if (evt) evt.preventDefault();
             
-            var contents = document.getElementsByClassName("tab-content");
-            for (var i = 0; i < contents.length; i++) {
-                contents[i].classList.remove("show");
-            }
-
-            var buttons = document.getElementsByClassName("nav-btn");
-            for (var j = 0; j < buttons.length; j++) {
-                buttons[j].classList.remove("active");
-            }
-
-            var targetContent = document.getElementById(tabId);
-            if (targetContent) {
-                targetContent.classList.add("show");
-            }
-
-            if (evt && evt.currentTarget) {
-                evt.currentTarget.classList.add("active");
-            }
-        }
-    </script>
-</body>
-</html>
