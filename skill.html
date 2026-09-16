@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - ความสามารถพิเศษ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #fff0f5 !important; color: #5c3a47 !important; min-height: 100vh; position: relative; overflow-x: hidden; }
+        .bg-glow-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; overflow: hidden; pointer-events: none; }
+        .glow-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6; animation: floatGlow 12s infinite ease-in-out alternate; }
+        .blob-1 { width: 400px; height: 400px; background: #ffb6c1; top: -100px; left: -100px; }
+        .blob-2 { width: 500px; height: 500px; background: #ffd1dc; bottom: -150px; right: -100px; }
+        .blob-3 { width: 300px; height: 300px; background: #ffe4e1; top: 40%; left: 50%; transform: translate(-50%, -50%); }
+        @keyframes floatGlow { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(40px, 60px) scale(1.15); } 100% { transform: translate(-30px, 30px) scale(0.9); } }
+        .sakura-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; overflow: hidden; }
+        .sakura-petal { position: absolute; background: linear-gradient(135deg, #ffc0cb, #ffb6c1); border-radius: 15px 0px 15px 0px; opacity: 0.45; animation: fallSakura linear infinite; }
+        @keyframes fallSakura { 0% { top: -10%; transform: translateX(0) rotate(0deg); opacity: 0; } 10% { opacity: 0.45; } 90% { opacity: 0.45; } 100% { top: 105%; transform: translateX(120px) rotate(450deg); opacity: 0; } }
+        .p1 { width: 12px; height: 16px; left: 5%; animation-duration: 9s; } .p2 { width: 15px; height: 20px; left: 18%; animation-duration: 12s; }
+        
+        .navbar { background: rgba(255, 255, 255, 0.9) !important; backdrop-filter: blur(12px); padding: 12px 10px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(255, 182, 193, 0.35); overflow-x: auto; white-space: nowrap; }
+        .navbar::-webkit-scrollbar { display: none; }
+        .nav-container { display: flex; justify-content: flex-start; gap: 10px; padding: 0 10px; width: max-content; margin: 0 auto; }
+        .nav-btn { display: inline-block; color: #8b4567; font-weight: 600; padding: 8px 16px; border-radius: 20px; font-size: 14px; text-decoration: none; background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(255, 192, 203, 0.8); }
+        .nav-btn.active { background: linear-gradient(135deg, #ffb6c1, #ff8da1) !important; color: #ffffff !important; box-shadow: 0 4px 15px rgba(255, 141, 161, 0.5); border-color: transparent; }
+        
+        .container { max-width: 800px; margin: 25px auto; padding: 0 15px; }
+        .card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); border-radius: 24px; padding: 30px 20px; box-shadow: 0 10px 35px rgba(235, 130, 160, 0.25); border: 2px solid rgba(255, 255, 255, 0.95); text-align: center; }
+        .activity-card { background: #ffffff; border-radius: 20px; padding: 18px; margin-top: 10px; text-align: center; border: 2px solid #ffd1dc; box-shadow: 0 8px 20px rgba(255, 182, 193, 0.25); }
+        .activity-img-wrapper { width: 100%; max-width: 480px; margin: 0 auto 12px auto; border-radius: 12px; overflow: hidden; border: 3px solid #fff0f5; }
+        .activity-img { width: 100%; height: auto; display: block; }
+        .activity-card h3 { color: #c2185b; font-size: 17px; margin-bottom: 8px; }
+        .activity-card p { color: #6b3e52; font-size: 14px; line-height: 1.6; text-align: left; background: #fff0f5; padding: 12px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div class="bg-glow-container"><div class="glow-blob blob-1"></div><div class="glow-blob blob-2"></div><div class="glow-blob blob-3"></div></div>
+    <div class="sakura-container"><div class="sakura-petal p1"></div><div class="sakura-petal p2"></div></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-btn">🌸 หน้าแรก</a>
+            <a href="intro.html" class="nav-btn">📖 คำนำ & ประวัติ</a>
+            <a href="education.html" class="nav-btn">💊 ความสนใจศึกษาต่อ</a>
+            <a href="activity.html" class="nav-btn">✨ กิจกรรม</a>
+            <a href="skill.html" class="nav-btn active">💖 ความสามารถพิเศษ</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2 style="color: #c2185b; margin-bottom: 15px; text-align: left;">💖 ความสามารถพิเศษ / ทักษะ</h2>
+            
+            <div class="activity-card">
+                <div class="activity-img-wrapper">
+                    <img src="1788832675807.jpg" alt="ภาพแสดงความสามารถพิเศษ" class="activity-img">
+                </div>
+                <h3>🎤 การร้องเพลง</h3>
+                <p>มีความสามารถและทักษะในการขับร้องเพลง การใช้น้ำเสียง การใส่อารมณ์ในบทเพลง และการถ่ายทอดอารมณ์ความรู้สึกผ่านเสียงเพลงได้อย่างไพเราะ</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
